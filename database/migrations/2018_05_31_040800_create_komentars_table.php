@@ -17,8 +17,6 @@ class CreateKomentarsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('artikel_id');
             $table->foreign('artikel_id')->references('id')->on('artikels')->onDelete('CASCADE');
-            $table->unsignedInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('members')->onDelete('CASCADE');
             $table->String('komentar');
             $table->timestamps();
         });

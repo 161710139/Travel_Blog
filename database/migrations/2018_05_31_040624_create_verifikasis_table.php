@@ -17,8 +17,7 @@ class CreateVerifikasisTable extends Migration
             $table->increments('id');
             $table->string('judul_artikel');
             $table->longText('isi_artikel');
-            $table->unsignedInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('members')->onDelete('CASCADE');
+            $table->string('penulis');
             $table->unsignedInteger('destinasi_id');
             $table->foreign('destinasi_id')->references('id')->on('destinasis')->onDelete('CASCADE');
             $table->timestamps();
