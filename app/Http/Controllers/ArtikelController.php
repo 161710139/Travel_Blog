@@ -14,7 +14,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::with('Verifikasi')->get();
+        $artikel = Artikel::all();
         return view('artikel.index',compact('artikels'));
     }
 

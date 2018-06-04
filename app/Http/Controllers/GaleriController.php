@@ -14,7 +14,7 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        $galeri = Galeri::with('Verifikasi')->get();
+        $galeri = Galeri::all();
         return view('galeri.index',compact('galeri'));
     }
 

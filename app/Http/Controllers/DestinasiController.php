@@ -14,8 +14,8 @@ class DestinasiController extends Controller
      */
     public function index()
     {
-        $destinasi = Artikel::all();
-        return view('destinasi.index', compact('destinasi'));
+        $destinasis = Destinasi::all();
+        return view('destinasi.index', compact('destinasis'));
     }
 
     /**
@@ -37,15 +37,11 @@ class DestinasiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nama_destinasi'=>'unique:destinasi|max:255|required'
+            'nama_destinasi'=>'unique:destinasis|max:255|required'
         ]);
-        $destinasi = new Destinasi;
-        $destinasi->nama_destinasi = $request->nama_destinasi;
-        $destinasi->save();
-        Session::flash("flash_notification", [
-            "level"=>"success",
-            "message"=>"Berhasil menyimpan $destinasi->nama_destinasi"
-            ]);
+        $destinasis = new Destinasi;
+        $destinasis->nama_destinasi = $request->nama_destinasi;
+        $destinasis->save();
         return redirect()->route('destinasis.index');
 
     }
@@ -58,7 +54,7 @@ class DestinasiController extends Controller
      */
     public function show($id)
     {
-        $destinasi = Destinasi::findOrFail($id);
+        $destinasis = Destinasi::findOrFail($id);
         return view('destinasi.show',compact('destinasi'));
     }
 
@@ -70,8 +66,8 @@ class DestinasiController extends Controller
      */
     public function edit($id)
     {
-        $destinasi = Destinasi::findOrFail($id);
-        return view('destinasi.edit',compact('destinasi'));
+        $destinasis = Destinasi::findOrFail($id);
+        return view('destinasi.edit',compact('destinasis'));
     }
 
     /**
@@ -86,9 +82,9 @@ class DestinasiController extends Controller
         $this->validate($request,[
             'nama_apparel'=>'max:255|required'
         ]);
-        $destinasi = Destinasi::findOrFail($id);
-        $destinasi->nama_destinasi = $request->nama_destinasi;
-        $destinasi->save();
+        $destinasis = Destinasi::findOrFail($id);
+        $destinasis->nama_destinasi = $request->nama_destinasi;
+        $destinasis->save();
         return redirect()->route('destinasis.index');
     }
 
@@ -100,7 +96,7 @@ class DestinasiController extends Controller
      */
     public function destroy($id)
     {
-        $destinasi = Destinasi::findOrFail($id);
+        $destinasis = Destinasi::findOrFail($id);
         $destinasis->delete();
         return redirect()->route('destinasis.index');
     }

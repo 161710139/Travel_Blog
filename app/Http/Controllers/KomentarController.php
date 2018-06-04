@@ -14,7 +14,7 @@ class KomentarController extends Controller
      */
     public function index()
     {
-        $komentar = Komentar::with('Artikel')->get();
+        $komentar = Komentar::all();
         return view('komentar.index',compact('komentar'));
     }
 
@@ -53,8 +53,7 @@ class KomentarController extends Controller
     public function show($id)
     {
         $komentar = Komentar::findOrFail($id);
-        return view('komenta
-        r.show',compact('komentar'));
+        return view('komentar.show',compact('komentar'));
     }
 
     /**
@@ -94,7 +93,8 @@ class KomentarController extends Controller
      */
     public function destroy($id)
     {
-        Komentar::destroy($id);
+        $komentar = Komentar::findOrFail($id);
+        $komentar->delete();
         return redirect()->route('komentars.index');
     }
 }

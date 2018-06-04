@@ -14,7 +14,7 @@ class VerifikasiController extends Controller
      */
     public function index()
     {
-        $verifikasi = Verifikasi::with('Destinasi')->get();
+        $verifikasi = Verifikasi::all();
         return view('verifikasi.index',compact('verifikasi'));
     }
 
@@ -25,7 +25,7 @@ class VerifikasiController extends Controller
      */
     public function create()
     {
-        return view('verifikasi.create')
+        return view('verifikasi.create');
     }
 
     /**
