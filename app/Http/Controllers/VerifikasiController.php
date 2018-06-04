@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Verifikasi;
+use App\Destinasi;
 
 class VerifikasiController extends Controller
 {
@@ -25,7 +26,8 @@ class VerifikasiController extends Controller
      */
     public function create()
     {
-        return view('verifikasi.create');
+        $destinasi = Destinasi::all();
+        return view('verifikasi.create',compact('destinasi'));
     }
 
     /**
@@ -40,7 +42,7 @@ class VerifikasiController extends Controller
             'judul_artikel' => 'required',
             'isi_artikel'=>'min:4|required',
             'penulis'=>'max:255|required',
-            'destinasi'=>'max:255|required'
+            'destinasi_id'=>'max:255|required'
         ]);
         $verifikasi = Verifikasi::create($request->all());
         return redirect()->route('verifikasis.index');

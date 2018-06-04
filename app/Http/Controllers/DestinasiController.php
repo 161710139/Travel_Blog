@@ -80,7 +80,7 @@ class DestinasiController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nama_apparel'=>'max:255|required'
+            'nama_destinasi'=>'max:255|required'
         ]);
         $destinasis = Destinasi::findOrFail($id);
         $destinasis->nama_destinasi = $request->nama_destinasi;

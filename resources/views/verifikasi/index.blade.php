@@ -12,7 +12,7 @@
 			  	<div class="row">
                 <div class="col-lg-11">
                     <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('destinasis.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('verifikasis.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>
