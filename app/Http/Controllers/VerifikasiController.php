@@ -15,7 +15,7 @@ class VerifikasiController extends Controller
      */
     public function index()
     {
-        $verifikasi = Verifikasi::all();
+        $verifikasi = Verifikasi::with('Destinasi')->get();
         return view('verifikasi.index',compact('verifikasi'));
     }
 
@@ -27,7 +27,8 @@ class VerifikasiController extends Controller
     public function create()
     {
         $destinasi = Destinasi::all();
-        return view('verifikasi.create',compact('destinasi'));
+        $verifikasi = Verifikasi::all();
+        return view('verifikasi.create',compact('destinasi','verifikasi'));
     }
 
     /**
@@ -68,8 +69,10 @@ class VerifikasiController extends Controller
      */
     public function edit($id)
     {
-        $verifikasi = verifikasi::findOrFail($id);
-        return view('verifikasi.edit',compact('verifikasi'));
+        $verifikasi = Verifikasi::findOrFail($id);
+        $destinasi = Destinasi::all();
+        $destinasiselect = Destinasi::findOrFail($id)->destinasi_id;
+        return view('verifikasi.edit',compact('verifikasi','destinasi','destinasiselect'));
     }
 
     /**
@@ -85,7 +88,7 @@ class VerifikasiController extends Controller
             'judul_artikel' => 'required',
             'isi_artikel'=>'min:4|required',
             'penulis'=>'max:255|required',
-            'destinasi'=>'max:255|required'
+            'destinasi_id'=>'max:255|required'
         ]);
         $verifikasi = Verifikasi::find($id);
         $verifikasi->update($request->all());

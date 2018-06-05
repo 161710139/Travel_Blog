@@ -12,7 +12,7 @@
 			  	<div class="row">
                 <div class="col-lg-11">
                     <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('verifikasis.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('artikels.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>
@@ -28,21 +28,18 @@
 				  	</thead>
 				  	<tbody>
 				  		@php $no = 1; @endphp
-				  		@foreach($verifikasi as $data)
+				  		@foreach($artikel as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>{{ $data->judul_artikel}}</td>
-				    	<td>{{ $data->isi_artikel}}</td>
-				    	<td>{{ $data->penulis}}</td>
-						<td>{{$data->Destinasi->nama_destinasi}}</td>
+				    	<td>{{ $data->Verifikasi->judul_artikel}}</td>
+				    	<td>{{ $data->Verifikasi->isi_artikel}}</td>
+				    	<td>{{ $data->Verifikasi->penulis}}</td>
+						<td>{{$data->Verifikasi->destinasi_id}}</td>
 						<td>
 							<a class="btn btn-warning" href="{{ route('verifikasis.edit',$data->id) }}">Edit</a>
 						</td>
 						<td>
-							<form action="{{ route('artikels.store') }}" method="post">
-								<div class="form-group">
-			  						<button type="submit" class="btn btn-primary">Verifikasi</button>
-			  					</div>
+							<a href="{{ route('verifikasis.show',$data->id) }}" class="btn btn-success">Show</a>
 						</td>
 						<td>
 							<form method="post" action="{{ route('verifikasis.destroy',$data->id) }}">

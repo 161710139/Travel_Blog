@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Galeri;
+use App\Verifikasi;
 
 class GaleriController extends Controller
 {
@@ -25,7 +26,8 @@ class GaleriController extends Controller
      */
     public function create()
     {
-        return view('galeri.create');
+        $verifikasi = Verifikasi::all();
+        return view('galeri.create',compact('verifikasi'));
     }
 
     /**
@@ -37,16 +39,17 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'gambar' => 'image|max:20048'
+            'foto' => 'image|max:20048',
+            'verifikasi_id'=> 'required'
         ]);
-        $galeri = Galeri::create($request->except('gambar'));
-        if ($request->hasFile('gambar')) {
-        $uploaded_logo = $request->file('gambar');
+        $galeri = Galeri::create($request->except('foto'));
+        if ($request->hasFile('foto')) {
+        $uploaded_logo = $request->file('foto');
         $extension = $uploaded_logo->getClientOriginalExtension();
         $filename = md5(time()) . '.' . $extension;
         $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
         $uploaded_logo->move($destinationPath, $filename);
-        $galeri->gambar = $filename;
+        $galeri->foto = $filename;
         $galeri->save();
         }
         return redirect()->route('galeris.index');
@@ -73,7 +76,9 @@ class GaleriController extends Controller
     public function edit($id)
     {
         $galeri = Galeri::findOrFail($id);
-        return view('galeri.edit',compact('galeri'));
+        $verifikasi = Verifikasi::all();
+        $verifikasiselect= Verifikasi::findOrFail($id)->verifikasi_id;
+        return view('galeri.edit',compact('galeri','verifikasi','verifikasiselect'));
     }
 
     /**
@@ -86,29 +91,26 @@ class GaleriController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'gambar' => 'image|max:20048',
+            'foto' => 'image|max:20048',
+            'verifikasi_id'=>'required'
         ]);
         $galeri = Galeri::find($id);
         $galeri -> update($request->all());
         // isi field gambar jika ada gambar yang diupload
-        if ($request->hasFile('gambar')) {
+        if ($request->hasFile('foto')) {
         // Mengambil file yang diupload
-        $uploaded_logo = $request->file('gambar');
+        $uploaded_logo = $request->file('foto');
         // mengambil extension file
         $extension = $uploaded_logo->getClientOriginalExtension();
         // membuat nama file random berikut extension
         $filename = md5(time()) . '.' . $extension;
-        // menyimpan gambar ke folder public/img
+        // menyimpan foto ke folder public/img
         $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
         $uploaded_logo->move($destinationPath, $filename);
-        // mengisi field gambar di Galeri dengan filename yang baru dibuat
-        $galeri->gambar = $filename;
+        // mengisi field foto di Galeri dengan filename yang baru dibuat
+        $galeri->foto = $filename;
         $galeri->save();
         }
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan $barang->type"
-        ]);
         return redirect()->route('galeris.index');
     }
 
@@ -120,6 +122,8 @@ class GaleriController extends Controller
      */
     public function destroy($id)
     {
-        if(!Galeri::destroy($id)) return redirect()->back();
+        $galeri = Galeri::findOrFail($id);
+        $galeri->delete();
+        return redirect()->route('galeris.index');
     }
 }

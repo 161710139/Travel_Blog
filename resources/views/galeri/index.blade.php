@@ -12,40 +12,36 @@
 			  	<div class="row">
                 <div class="col-lg-11">
                     <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('verifikasis.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('destinasis.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>
-				  	<thead>
+                        <thead>
 			  		<tr>
 			  		  <th>No</th>
 					  <th>Judul Artikel</th>
-					  <th>Isi Artikel</th>
-					  <th>Penulis</th>
-					  <th>Destinasi</th>
-					  <th colspan="3">Action</th>
+					  <th>Foto</th>
+					  <th colspan="3">Option</th>
 			  		</tr>
 				  	</thead>
 				  	<tbody>
 				  		@php $no = 1; @endphp
-				  		@foreach($verifikasi as $data)
+				  		@foreach($galeri as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>{{ $data->judul_artikel}}</td>
-				    	<td>{{ $data->isi_artikel}}</td>
-				    	<td>{{ $data->penulis}}</td>
-						<td>{{$data->Destinasi->nama_destinasi}}</td>
-						<td>
-							<a class="btn btn-warning" href="{{ route('verifikasis.edit',$data->id) }}">Edit</a>
+				    	<td>{{ $data->Verifikasi->judul_artikel }}</td>
+				    	<td>
+                        <a href="" class="thumbnail">
+                            <img src="img/{{ $data->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
+                        </td>
+				    	<td>
+							<a class="btn btn-warning" href="{{ route('galeris.edit',$data->id) }}">Edit</a>
 						</td>
 						<td>
-							<form action="{{ route('artikels.store') }}" method="post">
-								<div class="form-group">
-			  						<button type="submit" class="btn btn-primary">Verifikasi</button>
-			  					</div>
+							<a href="{{ route('galeris.show',$data->id) }}" class="btn btn-success">Show</a>
 						</td>
 						<td>
-							<form method="post" action="{{ route('verifikasis.destroy',$data->id) }}">
+							<form method="post" action="{{ route('galeris.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 

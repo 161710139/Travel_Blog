@@ -15,7 +15,7 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = Artikel::all();
-        return view('artikel.index',compact('artikels'));
+        return view('artikel.index',compact('artikel'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view('artikel.create');
+        return view('verifikasi.index');
     }
 
     /**

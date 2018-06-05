@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('destinasis','DestinasiController');
 Route::resource('verifikasis','VerifikasiController');
+Route::resource('galeris','GaleriController');
+Route::resource('artikels','ArtikelController');
