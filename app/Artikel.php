@@ -6,9 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artikel extends Model
 {
-    protected $fillable = array('verifikasi_id');
+    protected $fillable = array('judul_artikel','isi_artikel','user_id','destinasi_id');
     public $timestamps = true;
-    public function Verifikasi(){
-        return $this->belongsTo('App\Verifikasi' , 'verifikasi_id');
+    public function Destinasi(){
+        return $this->belongsTo('App\Destinasi','destinasi_id');
+    }
+    public function Galeri(){
+    	return $this->hasOne('App\Galeri','artikel_id');
+    }
+    public function User(){
+   	return $this->belongsTo('App\User' , 'user_id');
+    }
+    public function Komentar(){
+    	return $this->hasOne('App\Komentar','artikel_id');
     }
 }

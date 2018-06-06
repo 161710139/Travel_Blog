@@ -8,17 +8,17 @@
 			  	<form action="{{ route('galeris.store') }}" method="POST" enctype="multipart/form-data">
         		{!! csrf_field() !!}
  
-               <div class="form-group {{ $errors->has('verifikasi_id') ? 'has error' : '' }}">
+               <div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
 			  			<label class="control-label">Judul Artikel</label>
-			  			<select name="verifikasi_id" class="form-control">
+			  			<select name="artikel_id" class="form-control">
 			  				<option>Pilih Judul Artikel</option>
-			  				@foreach($verifikasi as $data)
+			  				@foreach($artikel as $data)
 			  				<option value="{{ $data->id }}">{{ $data->judul_artikel }}</option>
 			  				@endforeach
 			  			</select>
-			  			@if ($errors->has('verifikasi'))
+			  			@if ($errors->has('artikel'))
 			  			<span class="help-block">
-			  				<strong>{{ $errors->first('verifikasi') }}</strong>
+			  				<strong>{{ $errors->first('artikel') }}</strong>
 			  			</span>
 			  			@endif
 			  		</div>

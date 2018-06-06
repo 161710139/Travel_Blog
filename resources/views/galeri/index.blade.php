@@ -12,7 +12,7 @@
 			  	<div class="row">
                 <div class="col-lg-11">
                     <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('destinasis.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('galeris.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>
@@ -29,7 +29,7 @@
 				  		@foreach($galeri as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>{{ $data->Verifikasi->judul_artikel }}</td>
+				    	<td>{{ $data->Artikel->judul_artikel }}</td>
 				    	<td>
                         <a href="" class="thumbnail">
                             <img src="img/{{ $data->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;" >

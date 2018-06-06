@@ -31,18 +31,15 @@
 				  		@foreach($artikel as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>{{ $data->Verifikasi->judul_artikel}}</td>
-				    	<td>{{ $data->Verifikasi->isi_artikel}}</td>
-				    	<td>{{ $data->Verifikasi->penulis}}</td>
-						<td>{{$data->Verifikasi->destinasi_id}}</td>
+				    	<td>{{ $data->judul_artikel}}</td>
+				    	<td>{{ $data->isi_artikel}}</td>
+				    	<td>{{ $data->User->name}}</td>
+						<td>{{$data->Destinasi->nama_destinasi}}</td>
 						<td>
-							<a class="btn btn-warning" href="{{ route('verifikasis.edit',$data->id) }}">Edit</a>
+							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
 						</td>
 						<td>
-							<a href="{{ route('verifikasis.show',$data->id) }}" class="btn btn-success">Show</a>
-						</td>
-						<td>
-							<form method="post" action="{{ route('verifikasis.destroy',$data->id) }}">
+							<form method="post" action="{{ route('artikels.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 

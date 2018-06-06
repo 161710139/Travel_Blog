@@ -8,7 +8,7 @@ class Destinasi extends Model
 {
     protected $fillable = array('nama_destinasi');
     public $timestamps = true;
-    public function Verifikasi(){
-       return $this->hasMany( 'App\Verifikasi' , 'destinasi_id');
+    public function Artikel(){
+       return $this->hasMany( 'App\Artikel' , 'destinasi_id');
     }
 }

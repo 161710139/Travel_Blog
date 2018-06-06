@@ -15,8 +15,12 @@ class CreateArtikelsTable extends Migration
     {
         Schema::create('artikels', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('verifikasi_id');
-            $table->foreign('verifikasi_id')->references('id')->on('verifikasis')->onDelete('CASCADE');
+            $table->string('judul_artikel');
+            $table->longText('isi_artikel');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->unsignedInteger('destinasi_id');
+            $table->foreign('destinasi_id')->references('id')->on('destinasis')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

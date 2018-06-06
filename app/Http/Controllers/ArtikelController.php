@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Artikel;
+use App\Destinasi;
+use App\User;
 
 class ArtikelController extends Controller
 {
@@ -14,7 +16,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::all();
+        $artikel = Artikel::with('Destinasi')->get();
         return view('artikel.index',compact('artikel'));
     }
 
@@ -25,7 +27,10 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view('verifikasi.index');
+        $destinasi = Destinasi::all();
+        $artikel = Artikel::all();
+        $user = User::all();
+        return view('artikel.create',compact('destinasi','artikel','user'));
     }
 
     /**
@@ -37,7 +42,10 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'verifikasi_id' => 'required',
+            'judul_artikel' => 'required',
+            'isi_artikel'=>'min:4|required',
+            'user_id'=>'max:255|required',
+            'destinasi_id'=>'max:255|required'
         ]);
         $artikel = Artikel::create($request->all());
         return redirect()->route('artikels.index');
@@ -52,7 +60,7 @@ class ArtikelController extends Controller
     public function show($id)
     {
         $artikel = Artikel::findOrFail($id);
-        return view('artikael.show',compact('artikael'));
+        return view('artikel.show',compact('artikel'));
     }
 
     /**
@@ -64,7 +72,11 @@ class ArtikelController extends Controller
     public function edit($id)
     {
         $artikel = Artikel::findOrFail($id);
-        return view('artikel.edit',compact('artikel'));
+        $destinasi = Destinasi::all();
+        $destinasiselect = Destinasi::findOrFail($id)->destinasi_id; 
+        $user = User::all();
+        $userselect = User::findOrFail($id)->user_id;
+        return view('artikel.edit',compact('artikel','destinasi','destinasiselect','user','userselect'));
     }
 
     /**
@@ -76,7 +88,12 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['verifikasi_id' => 'required']);
+        $this->validate($request, [
+            'judul_artikel' => 'required',
+            'isi_artikel'=>'min:4|required',
+            'user_id'=>'max:255|required',
+            'destinasi_id'=>'max:255|required'
+        ]);
         $artikel = Artikel::find($id);
         $artikel->update($request->all());
         return redirect()->route('artikels.index');
@@ -90,8 +107,8 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        Artikel::destroy($id);
+        $artikel =Artikel::findOrFail($id);
+        $artikel->delete();
         return redirect()->route('artikels.index');
-
     }
 }

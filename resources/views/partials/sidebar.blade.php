@@ -9,19 +9,19 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-tachometer-alt"></i>Data</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="index.html">Dashboard 1</a>
+                                    <a href="{{ route('destinasis.index') }}">Destinasi</a>
                                 </li>
                                 <li>
-                                    <a href="index2.html">Dashboard 2</a>
+                                    <a href="{{ route('artikels.index') }}">Artikel</a>
                                 </li>
                                 <li>
-                                    <a href="index3.html">Dashboard 3</a>
+                                    <a href="{{ route('galeris.index') }}">Galeri</a>
                                 </li>
                                 <li>
-                                    <a href="index4.html">Dashboard 4</a>
+                                    <a href="">Data Komentar</a>
                                 </li>
                             </ul>
                         </li>

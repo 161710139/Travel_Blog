@@ -17,16 +17,16 @@
                             </span>
                         @endif
 			  		</div>
-			  		<div class="form-group {{ $errors->has('verifikasi_id') ? ' has-error' : '' }}">
+			  		<div class="form-group {{ $errors->has('artikel_id') ? ' has-error' : '' }}">
 			  			<label class="control-label">Judul Artikel</label>	
-			  			<select name="verifikasi_id" class="form-control">
-			  				@foreach($verifikasi as $data)
-			  				<option value="{{ $data->id }}"  {{ $verifikasiselect == $data->id ? 'selected="selected"' : '' }}>{{ $data->judul_artikel }}</option>
+			  			<select name="artikel_id" class="form-control">
+			  				@foreach($artikel as $data)
+			  				<option value="{{ $data->id }}"  {{ $artikelselect == $data->id ? 'selected="selected"' : '' }}>{{ $data->judul_artikel }}</option>
 			  				@endforeach
 			  			</select>
-			  			@if ($errors->has('verifikasi_id'))
+			  			@if ($errors->has('artikel_id'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('verifikasi_id') }}</strong>
+                                <strong>{{ $errors->first('artikel_id') }}</strong>
                             </span>
                         @endif
 			  		</div>

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Galeri extends Model
 {
-    protected $fillable = array('foto','verifikasi_id');
+    protected $fillable = array('foto','artikel_id');
     public $timestamps = true;
-    public function Verifikasi(){
-        return $this->belongsTo('App\Verifikasi','verifikasi_id');
+    public function Artikel(){
+        return $this->belongsTo('App\Artikel','artikel_id');
     }
 }

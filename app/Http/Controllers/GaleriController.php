@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Galeri;
-use App\Verifikasi;
+use App\Artikel;
 
 class GaleriController extends Controller
 {
@@ -26,8 +26,8 @@ class GaleriController extends Controller
      */
     public function create()
     {
-        $verifikasi = Verifikasi::all();
-        return view('galeri.create',compact('verifikasi'));
+        $artikel = Artikel::all();
+        return view('galeri.create',compact('artikel'));
     }
 
     /**
@@ -40,7 +40,7 @@ class GaleriController extends Controller
     {
         $this->validate($request, [
             'foto' => 'image|max:20048',
-            'verifikasi_id'=> 'required'
+            'artikel_id'=> 'required'
         ]);
         $galeri = Galeri::create($request->except('foto'));
         if ($request->hasFile('foto')) {
@@ -76,9 +76,9 @@ class GaleriController extends Controller
     public function edit($id)
     {
         $galeri = Galeri::findOrFail($id);
-        $verifikasi = Verifikasi::all();
-        $verifikasiselect= Verifikasi::findOrFail($id)->verifikasi_id;
-        return view('galeri.edit',compact('galeri','verifikasi','verifikasiselect'));
+        $artikel = Artikel::all();
+        $artikelselect= Artikel::findOrFail($id)->artikel_id;
+        return view('galeri.edit',compact('galeri','artikel','artikelselect'));
     }
 
     /**
@@ -92,7 +92,7 @@ class GaleriController extends Controller
     {
         $this->validate($request, [
             'foto' => 'image|max:20048',
-            'verifikasi_id'=>'required'
+            'artikel_id'=>'required'
         ]);
         $galeri = Galeri::find($id);
         $galeri -> update($request->all());
