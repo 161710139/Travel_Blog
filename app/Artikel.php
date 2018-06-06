@@ -12,12 +12,12 @@ class Artikel extends Model
         return $this->belongsTo('App\Destinasi','destinasi_id');
     }
     public function Galeri(){
-    	return $this->hasOne('App\Galeri','artikel_id');
+    	return $this->hasMany('App\Galeri','artikel_id');
     }
     public function User(){
    	return $this->belongsTo('App\User' , 'user_id');
     }
     public function Komentar(){
-    	return $this->hasOne('App\Komentar','artikel_id');
+    	return $this->hasMany('App\Komentar','artikel_id');
     }
 }

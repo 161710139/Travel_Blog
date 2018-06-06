@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']], function(){
+Route::get('/', 'HomeController@index')->name('home');
 Route::resource('destinasis','DestinasiController');
-Route::resource('verifikasis','VerifikasiController');
+Route::resource('komentars','KomentarController');
 Route::resource('galeris','GaleriController');
 Route::resource('artikels','ArtikelController');
+});

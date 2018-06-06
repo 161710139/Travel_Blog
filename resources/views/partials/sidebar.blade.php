@@ -21,7 +21,7 @@
                                     <a href="{{ route('galeris.index') }}">Galeri</a>
                                 </li>
                                 <li>
-                                    <a href="">Data Komentar</a>
+                                    <a href="{{ route('komentars.index') }}">Data Komentar</a>
                                 </li>
                             </ul>
                         </li>

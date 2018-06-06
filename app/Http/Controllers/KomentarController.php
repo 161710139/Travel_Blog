@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Komentar;
+use App\User;
+use App\Artikel;
 
 class KomentarController extends Controller
 {
@@ -25,7 +27,9 @@ class KomentarController extends Controller
      */
     public function create()
     {
-        return view('komentar.create');
+        $user = User::all();
+        $artikel = Artikel::all();
+        return view('komentar.create',compact('user','artikel'));
     }
 
     /**
@@ -37,6 +41,7 @@ class KomentarController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'user_id'=>'required',
             'artikel_id' => 'required',
             'komentar'=>'required'
         ]);
@@ -64,8 +69,12 @@ class KomentarController extends Controller
      */
     public function edit($id)
     {
-        $kometar = Komentar::findOrFail($id);
-        return view('komentar.edit',compact('komentar'));
+        $komentar = Komentar::findOrFail($id);
+        $artikel = Artikel::all();
+        $artikelselect = Artikel::findOrFail($id)->destinasi_id; 
+        $user = User::all();
+        $userselect = User::findOrFail($id)->user_id;
+        return view('komentar.edit',compact('komentar','artikel','artikelselect','user','userselect'));
     }
 
     /**
@@ -77,8 +86,10 @@ class KomentarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['verifikasi_id' => 'required',
-            'komentar'=>'required' 
+        $this->validate($request, [
+            'user_id'=>'required',
+            'artikel_id' => 'required',
+            'komentar'=>'required|min:5' 
         ]);
         $komentar = Komentar::find($id);
         $komentar->update($request->all());
