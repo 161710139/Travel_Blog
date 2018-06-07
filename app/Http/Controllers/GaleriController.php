@@ -52,7 +52,7 @@ class GaleriController extends Controller
         $galeri->foto = $filename;
         $galeri->save();
         }
-        return redirect()->route('galeris.index');
+        return redirect()->route('galeri.index');
     }
 
     /**
@@ -73,11 +73,11 @@ class GaleriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Galeri $galeri)
     {
-        $galeri = Galeri::findOrFail($id);
+        $galeri = Galeri::findOrFail($galeri->id);
         $artikel = Artikel::all();
-        $artikelselect= Artikel::findOrFail($id)->artikel_id;
+        $artikelselect= Galeri::findOrFail($galeri->id)->artikel_id;
         return view('galeri.edit',compact('galeri','artikel','artikelselect'));
     }
 
@@ -111,7 +111,7 @@ class GaleriController extends Controller
         $galeri->foto = $filename;
         $galeri->save();
         }
-        return redirect()->route('galeris.index');
+        return redirect()->route('galeri.index');
     }
 
     /**
@@ -124,6 +124,6 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::findOrFail($id);
         $galeri->delete();
-        return redirect()->route('galeris.index');
+        return redirect()->route('galeri.index');
     }
 }

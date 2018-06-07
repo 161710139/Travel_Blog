@@ -64,7 +64,7 @@ class DestinasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Destinasi $destinasi)
     {
         $destinasis = Destinasi::findOrFail($id);
         return view('destinasi.edit',compact('destinasis'));

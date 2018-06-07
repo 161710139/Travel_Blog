@@ -69,11 +69,11 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Artikel $artikel)
     {
-        $artikel = Artikel::findOrFail($id);
+        $artikel = Artikel::findOrFail($artikel->id);
         $destinasi = Destinasi::all();
-        $destinasiselect = Destinasi::findOrFail($id)->destinasi_id; 
+        $destinasiselect = Artikel::findOrFail($artikel->id)->destinasi_id; 
         return view('artikel.edit',compact('artikel','destinasi','destinasiselect'));
     }
 

@@ -21,6 +21,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']], function(
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('destinasis','DestinasiController');
 Route::resource('komentars','KomentarController');
-Route::resource('galeris','GaleriController');
+Route::resource('galeri','GaleriController');
 Route::resource('artikels','ArtikelController');
 });

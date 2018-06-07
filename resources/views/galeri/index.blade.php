@@ -12,7 +12,7 @@
 			  	<div class="row">
                 <div class="col-lg-11">
                     <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('galeris.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('galeri.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>
@@ -35,13 +35,13 @@
                             <img src="../img/{{ $data->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
                         </td>
 				    	<td>
-							<a class="btn btn-warning" href="{{ route('galeris.edit',$data->id) }}">Edit</a>
+							<a class="btn btn-warning" href="{{ route('galeri.edit',$data->id) }}">Edit</a>
 						</td>
 						<td>
-							<a href="{{ route('galeris.show',$data->id) }}" class="btn btn-success">Show</a>
+							<a href="{{ route('galeri.show',$data->id) }}" class="btn btn-success">Show</a>
 						</td>
 						<td>
-							<form method="post" action="{{ route('galeris.destroy',$data->id) }}">
+							<form method="post" action="{{ route('galeri.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 

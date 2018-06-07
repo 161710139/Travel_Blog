@@ -1,7 +1,7 @@
 <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="assets/admin/images/icon/logo.png" alt="Cool Admin" />
+                    <img src="{{ asset('assets/admin/images/icon/logo.png') }}" alt="ShareTravel" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -18,7 +18,7 @@
                                     <a href="{{ route('artikels.index') }}">Artikel</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('galeris.index') }}">Galeri</a>
+                                    <a href="{{ route('galeri.index') }}">Galeri</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('komentars.index') }}">Data Komentar</a>

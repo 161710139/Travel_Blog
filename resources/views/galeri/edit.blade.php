@@ -5,7 +5,7 @@
 		<div class="col-md-12">
 			  <div class="panel-body">
 			  	<h2 class="sub-header">Edit Destinasi<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
-			  	<form action="{{ route('galeris.update',$galeri->id) }}" method="post" enctype="multipart/form-data">
+			  	<form action="{{ route('galeri.update',$galeri->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
