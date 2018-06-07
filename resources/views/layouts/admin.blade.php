@@ -81,6 +81,7 @@
     <script src="{{ asset('assets/admin/vendor/chartjs/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/select2/select2.min.js') }}">
     </script>
+    <script type="text/javascript" src="{{ asset('assets/admin/js/tinymce/tinymce.min.js ') }}"></script>
 
     <!-- Main JS-->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
