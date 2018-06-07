@@ -66,7 +66,7 @@ class DestinasiController extends Controller
      */
     public function edit(Destinasi $destinasi)
     {
-        $destinasis = Destinasi::findOrFail($id);
+        $destinasis = Destinasi::findOrFail($destinasi->id);
         return view('destinasi.edit',compact('destinasis'));
     }
 
