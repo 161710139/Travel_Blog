@@ -28,7 +28,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function Verifikasi(){
-        return $this->hasMany('App\Verifikasi','user_id');
+    public function Artikel(){
+        return $this->hasMany('App\Artikel','user_id');
     }
 }

@@ -74,9 +74,7 @@ class ArtikelController extends Controller
         $artikel = Artikel::findOrFail($id);
         $destinasi = Destinasi::all();
         $destinasiselect = Destinasi::findOrFail($id)->destinasi_id; 
-        $user = User::all();
-        $userselect = User::findOrFail($id)->user_id;
-        return view('artikel.edit',compact('artikel','destinasi','destinasiselect','user','userselect'));
+        return view('artikel.edit',compact('artikel','destinasi','destinasiselect'));
     }
 
     /**
@@ -95,7 +93,7 @@ class ArtikelController extends Controller
             'destinasi_id'=>'max:255|required'
         ]);
         $artikel = Artikel::find($id);
-        $artikel->update($request->all());
+        $artikel->update($request->except('user_id'));
         return redirect()->route('artikels.index');
     }
 

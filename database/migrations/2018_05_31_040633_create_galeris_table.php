@@ -28,7 +28,7 @@ class CreateGalerisTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('galeris');
+    { Schema::dropIfExists('galeris');
     }
+       
 }

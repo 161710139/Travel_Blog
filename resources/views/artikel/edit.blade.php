@@ -27,12 +27,8 @@
                         @endif
 			  		</div>
 			  		<div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
-			  			<label class="control-label">Destinasi</label>	
-			  			<select name="user_id" class="form-control">
-			  				@foreach($user as $data)
-			  				<option value="{{ $data->id }}" {{ $userselect == $data->id ? 'selected=="selected"' : '' }}>{{ $data->name }}</option>
-			  				@endforeach
-			  			</select>
+			  			<label class="control-label">Username</label>	
+			  			<input type="text" name="user_id" class="form-control"  value="{{ $artikel->User->name }}" readonly>
 			  			@if ($errors->has('user_id'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('user_id') }}</strong>
