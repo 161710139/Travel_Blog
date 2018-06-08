@@ -14,22 +14,23 @@ class UsersSeeder extends Seeder
     public function run()
     {
         //
-        $adminRole = new Role();
-        $adminRole->name = "admin";
-        $adminRole->display_name = "Admin";
-        $adminRole->save();
 
         $memberRole = new Role();
         $memberRole->name="member";
         $memberRole->display_name="Member";
         $memberRole->save();
 
-        $admin = new User();
-        $admin->name = "Admin";
-        $admin->email = "admin@gmail.com";
-        $admin->password = bcrypt('rahasia');
-        $admin->save();
-        $admin->attachRole($adminRole);
+        $superadminRole = new Role();
+        $superadminRole->name="super_admin";
+        $superadminRole->display_name="SuperAdmin";
+        $superadminRole->save();
+
+        $superadmin = new User();
+        $superadmin->name = "Super Admin";
+        $superadmin->email = "superadmin@gmail.com";
+        $superadmin->password = bcrypt('rahasia');
+        $superadmin->save();
+        $superadmin->attachRole($superadminRole);
 
         $member = new User();
         $member->name = "member";

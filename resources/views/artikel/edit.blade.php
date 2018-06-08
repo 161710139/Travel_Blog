@@ -5,9 +5,18 @@
 		<div class="col-md-12">
 			  <div class="panel-body">
 			  	<h2 class="sub-header">Edit Artikel yang Belum Terartikel<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
-			  	<form action="{{ route('artikels.update',$artikel->id) }}" method="post">
+			  	<form action="{{ route('artikels.update',$artikel->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
 			  		{{ csrf_field() }}
+			  		<div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
+			  			<label class="control-label">Foto</label><br>
+			  			<input type="file" id="foto" name="foto" class="validate" value="{{ $artikel->foto }}"  accept="image/*" required>
+			  			@if ($errors->has('foto'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('foto') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
 			  		<div class="form-group {{ $errors->has('judul_artikel') ? ' has-error' : '' }}">
 			  			<label class="control-label">judul_artikel</label>	
 			  			<input type="text" name="judul_artikel" class="form-control"  value="{{ $artikel->judul_artikel }}" required>
@@ -27,8 +36,7 @@
                         @endif
 			  		</div>
 			  		<div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
-			  			<label class="control-label">Username</label>	
-			  			<input type="text" name="user_id" class="form-control"  value="{{ $artikel->User->name }}" readonly>
+			  			<input type="hidden" name="user_id" class="form-control"  value="{{ $artikel->User->name }}" readonly>
 			  			@if ($errors->has('user_id'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('user_id') }}</strong>

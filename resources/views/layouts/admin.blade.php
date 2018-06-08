@@ -29,7 +29,7 @@
     <link href="{{ asset('assets/admin/vendor/slick/slick.css" rel="stylesheet') }}" media="all">
     <link href="{{ asset('assets/admin/vendor/select2/select2.min.css" rel="stylesheet') }}" media="all">
     <link href="{{ asset('assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
-     <link href="{{ asset('assets/admin/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css') }}" rel="stylesheet">
+    @yield('css')
 
     <!-- Main CSS-->
     <link href="{{ asset('assets/admin/css/theme.css') }}" rel="stylesheet" media="all">
@@ -64,20 +64,7 @@
     
     <!-- Jquery JS-->
     <script src="{{ asset('assets/admin/vendor/jquery-3.2.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/admin/tinymce/js/tinymce/tinymce.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script>
-    <script>
-   var konten = document.getElementById("konten");
-     CKEDITOR.replace(konten,{
-     language:'en-gb'
-   });
-   CKEDITOR.config.allowedContent = true;
-</script>
     <!-- Bootstrap JS-->
-
-
-    <script src="{{ asset('assets/admin/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script src="{{ asset('assets/admin/vendor/bootstrap-4.1/popper.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
     <!-- Vendor JS       -->
@@ -95,9 +82,27 @@
     <script src="{{ asset('assets/admin/vendor/chartjs/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/select2/select2.min.js') }}">
     </script>
-
+    
+    @yield('js')
+    @stack('scripts')
     <!-- Main JS-->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    <!-- <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+
+    });
+
+</script> -->
 
 </body>
 

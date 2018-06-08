@@ -5,8 +5,17 @@
 		<div class="col-md-12">
 			  <div class="panel-body">
 			  	<h2 class="sub-header">Tambah Artikel yg Belum Terverifikasi<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
-			  	<form action="{{ route('artikels.store') }}" method="post">
+			  	<form action="{{ route('artikels.store') }}" method="post"  enctype="multipart/form-data">
 			  		{{ csrf_field() }}
+			  		 <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
+                    <label class="control-label">Gambar</label>
+                    <input type="file" id="foto" name="foto" class="validate" accept="image/*" required>
+                	@if ($errors->has('foto'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('foto') }}</strong>
+                            </span>
+                        @endif
+                	</div>
 			  		<div class="form-group {{ $errors->has('judul_artikel') ? ' has-error' : '' }}">
 			  			<label class="control-label">Judul Artikel</label>	
 			  			<input type="text" name="judul_artikel" class="form-control" required>
@@ -26,16 +35,16 @@
 			  			@endif
 			  		</div>
 			  		<div class="form-group {{ $errors->has('user_id') ? 'has error' : '' }}">
-			  			<label class="control-label">Penulis</label>
-			  			<select name="user_id" class="form-control">
-			  				<option>Pilih Nama Penulis</option>
-			  				@foreach($user as $data)
+			  			<!-- <select name="user_id" class="form-control">
+			  				<option>Pilih Nama Penulis</option> -->
+			  				<!-- @foreach($user as $data)
 			  				<option value="{{ $data->id }}">{{ $data->name }}</option>
-			  				@endforeach
-			  			</select>
-			  			@if ($errors->has('user'))
+			  				@endforeach -->
+			  				<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+			  			<!-- </select> -->
+			  			@if ($errors->has('user_id'))
 			  			<span class="help-block">
-			  				<strong>{{ $errors->first('user') }}</strong>
+			  				<strong>{{ $errors->first('user_id') }}</strong>
 			  			</span>
 			  			@endif
 			  		</div>
@@ -52,7 +61,6 @@
 			  				<strong>{{ $errors->first('destinasi') }}</strong>
 			  			</span>
 			  			@endif
-			  		</div>
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-success">Tambah</button>
 			  		</div>

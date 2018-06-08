@@ -24,8 +24,8 @@
 			  		</div>
  
                 <div class="form-group">
-                    <label for="foto">Gambar</label>
-                    <input type="file" id="foto" name="foto" accept="image/*">
+                    <label for="sampul">Gambar</label>
+                    <input type="file" id="sampul" name="sampul" accept="image/*" multiple>
                 </div>
  
                 <input class="btn btn-primary" type="submit" value="Upload">

@@ -10,17 +10,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']], function(){
+Route::group(['prefix'=>'superadmin', 'middleware'=>['auth','role:super_admin']], function(){
 Route::get('/', 'HomeController@index')->name('home');
+Route::resource('member','MemberController');
 Route::resource('destinasis','DestinasiController');
 Route::resource('komentars','KomentarController');
 Route::resource('galeri','GaleriController');
 Route::resource('artikels','ArtikelController');
+});
+
+Route::group(['prefix'=>'member', 'middleware'=>['auth','role:super_admin|member']], function(){
+	Route::resource('artikels','ArtikelController');
+	Route::resource('galeri','GaleriController');
+});	
+
+Route::group(['prefix'=>'superadmin', 'middleware'=>['auth','role:super_admin']], function(){
+	Route::resource('member','MemberController');
 });

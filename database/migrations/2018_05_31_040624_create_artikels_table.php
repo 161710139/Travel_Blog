@@ -15,6 +15,7 @@ class CreateArtikelsTable extends Migration
     {
         Schema::create('artikels', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('foto')->nullable();
             $table->string('judul_artikel');
             $table->longText('isi_artikel');
             $table->unsignedInteger('user_id');

@@ -15,7 +15,7 @@ class ArtikelController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Artikel $artikel)
     {
         $artikel = Artikel::with('Destinasi')->get();
         return view('artikel.index',compact('artikel'));
@@ -43,12 +43,22 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'foto'=>'image|max:20048',
             'judul_artikel' => 'required',
             'isi_artikel'=>'min:4|required',
             'user_id'=>'max:255|required',
             'destinasi_id'=>'max:255|required'
         ]);
-        $artikel = Artikel::create($request->all());
+        $artikel = Artikel::create($request->except('foto'));
+        if ($request->hasFile('foto')) {
+        $uploaded_foto = $request->file('foto');
+        $extension = $uploaded_foto->getClientOriginalExtension();
+        $filename = md5(time()) . '.' . $extension;
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $uploaded_foto->move($destinationPath, $filename);
+        $artikel->foto = $filename;
+        $artikel->save();
+        }
         return redirect()->route('artikels.index');
     }
 
@@ -88,6 +98,7 @@ class ArtikelController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'foto'=>'image|max:20048',
             'judul_artikel' => 'required',
             'isi_artikel'=>'min:4|required',
             'user_id'=>'max:255|required',
@@ -95,6 +106,21 @@ class ArtikelController extends Controller
         ]);
         $artikel = Artikel::find($id);
         $artikel->update($request->except('user_id'));
+        // isi field gambar jika ada gambar yang diupload
+        if ($request->hasFile('foto')) {
+        // Mengambil file yang diupload
+        $uploaded_logo = $request->file('foto');
+        // mengambil extension file
+        $extension = $uploaded_logo->getClientOriginalExtension();
+        // membuat nama file random berikut extension
+        $filename = md5(time()) . '.' . $extension;
+        // menyimpan foto ke folder public/img
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $uploaded_logo->move($destinationPath, $filename);
+        // mengisi field foto di artikel dengan filename yang baru dibuat
+        $artikel->foto = $filename;
+        $artikel->save();
+        }
         return redirect()->route('artikels.index');
     }
 

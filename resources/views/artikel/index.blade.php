@@ -1,4 +1,15 @@
 @extends('layouts.admin')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/datatables/css/jquery.dataTables.css') }}"/>
+@endsection
+@section('js')
+<script type="text/javascript" src="{{ asset('assets/admin/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+    </script>
+@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -14,11 +25,12 @@
                     <h2 class="title-1 m-b-25">Earnings By Items</h2>
                     <a href="{{ route('artikels.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
-                        <table class="table table-borderless table-striped table-earning">
+                        <table id="example" class="table display table-borderless table-striped table-earning" style="width:100%">
                         <br>
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
+			  		  <th>Sampul</th>
 					  <th>Judul Artikel</th>
 					  <th>Isi Artikel</th>
 					  <th>Penulis</th>
@@ -31,6 +43,10 @@
 				  		@foreach($artikel as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
+				    	<td>
+				    	<a href="" class="thumbnail">
+                            <img src="../img/{{ $data->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
+                        </td>
 				    	<td>{{ $data->judul_artikel}}</td>
 				    	<td>{{ $data->isi_artikel}}</td>
 				    	<td>{{ $data->User->name}}</td>
