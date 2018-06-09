@@ -25,21 +25,13 @@
                                 </li>
                             </ul>
                         </li> -->
-                        <li>
-                            <a href="{{ route('destinasis.index') }}">
-                                <i class="fas fa-fighter-jet"></i> Destinasi</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('artikels.index') }}">
+<li>
+                            <a href="{{ route('artikelmember.index') }}">
                                 <i class="fas fa-pencil-square"></i>Artikels</a>
                         </li>
                         <li>
-                            <a href="{{ route('galeri.index') }}">
+                            <a href="{{ route('galerimember.index') }}">
                                 <i class="far fa-picture-o"></i>Galeri</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('komentars.index') }}">
-                                <i class="fas fa-comments"></i>Komentar</a>
                         </li>
                         <!-- <li>
                             <a href="map.html">

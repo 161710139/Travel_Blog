@@ -143,15 +143,19 @@ a.more-link {
   letter-spacing: 1px;
 }
 </style>
-<h1>Non Member Ya??</h1>
-<p class="zoom-area"><b>Non User</b> Lain kali Login Dulu , Biar ga Sering Mampir Kesini </p>
+<h1>Salah Masukin User Ya?</h1>
+<p class="zoom-area"><b>User</b> Lain kali Login Ke Halaman Yang Tepat Ya , Biar ga Sering Mampir Kesini </p>
 <section class="error-container">
   <span><span>4</span></span>
   <span>0</span>
   <span><span>3</span></span>
 </section>
 <div class="link-container">
-  <a target="_blank" href="https://www.silocreativo.com/en/creative-examples-404-error-css/" class="more-link">Balik Yu</a>
+  <a target="_blank" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="more-link">
+   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+   </form>
+   Logout Aja ya</a>
 </div>
 </body>
 </html>

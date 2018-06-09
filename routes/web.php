@@ -26,8 +26,9 @@ Route::resource('artikels','ArtikelController');
 });
 
 Route::group(['prefix'=>'member', 'middleware'=>['auth','role:super_admin|member']], function(){
-	Route::resource('artikels','ArtikelController');
-	Route::resource('galeri','GaleriController');
+	Route::resource('artikelmember','ArtikelMemberController');
+	Route::get('editartikel','ArtikelMemberController@edit');
+	Route::resource('galerimember','GaleriMemberController');
 });	
 
 Route::group(['prefix'=>'superadmin', 'middleware'=>['auth','role:super_admin']], function(){

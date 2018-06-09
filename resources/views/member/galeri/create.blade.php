@@ -1,11 +1,11 @@
-@extends('layouts.admin')	
+@extends('layouts.member')	
 @section('content')
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
 			  <div class="panel-body">
 			  	<h2 class="sub-header">Tambah Artikel yg Belum Terverifikasi<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
-			  	<form action="{{ route('galeri.store') }}" method="POST" enctype="multipart/form-data">
+			  	<form action="{{ route('galerimember.store') }}" method="POST" enctype="multipart/form-data">
         		{!! csrf_field() !!}
  
                <div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
@@ -25,7 +25,7 @@
  
                 <div class="form-group">
                     <label for="foto">Gambar</label>
-                    <input type="file" id="foto" name="foto" accept="image/*" multiple>
+                    <input type="file" id="foto" name="foto" accept="image/*" >
                 </div>
  
                 <input class="btn btn-primary" type="submit" value="Upload">

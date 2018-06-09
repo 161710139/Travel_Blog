@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.member')
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/datatables/css/jquery.dataTables.css') }}"/>
 @endsection
@@ -23,7 +23,7 @@
 			  	<div class="row">
                 <div class="col-lg-11">
                     <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('artikels.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('artikelmember.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
                         <table id="example" class="table display table-borderless table-striped table-earning" style="width:100%">
                         <br>
@@ -55,10 +55,10 @@
 						<td>{{ $data->created_at->diffForHumans() }}</td>
 						<td></td>
 						<td>
-							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
+							<a class="btn btn-warning" href="{{ route('artikelmember.edit',$data->id) }}">Edit</a>
 						</td>
 						<td>
-							<form method="post" action="{{ route('artikels.destroy',$data->id) }}">
+							<form method="post" action="{{ route('artikelmember.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 
