@@ -10,9 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TampilanController@index')->name('home');
+Route::get('destinasi','TampilanController@destinasi');
 
 Auth::routes();
 
@@ -25,10 +24,10 @@ Route::resource('galeri','GaleriController');
 Route::resource('artikels','ArtikelController');
 });
 
-Route::group(['prefix'=>'member', 'middleware'=>['auth','role:super_admin|member']], function(){
-	Route::resource('artikelmember','ArtikelMemberController');
-	Route::get('editartikel','ArtikelMemberController@edit');
-	Route::resource('galerimember','GaleriMemberController');
+Route::group(['prefix'=>'member', 'middleware'=>['auth','role:member|super_admin']], function(){
+	//Route::get('/','HomeController@index')->name('home');
+	Route::resource('artikels','ArtikelController');
+	Route::resource('galeri','GaleriController');
 });	
 
 Route::group(['prefix'=>'superadmin', 'middleware'=>['auth','role:super_admin']], function(){

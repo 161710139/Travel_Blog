@@ -25,12 +25,12 @@
                                 </li>
                             </ul>
                         </li> -->
-<li>
-                            <a href="{{ route('artikelmember.index') }}">
+                        <li>
+                            <a href="{{ route('artikels.index') }}">
                                 <i class="fas fa-pencil-square"></i>Artikels</a>
                         </li>
                         <li>
-                            <a href="{{ route('galerimember.index') }}">
+                            <a href="{{ route('galeri.index') }}">
                                 <i class="far fa-picture-o"></i>Galeri</a>
                         </li>
                         <!-- <li>

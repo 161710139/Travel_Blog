@@ -4,11 +4,11 @@
 	<div class="container">
 		<div class="col-md-12">
 			  <div class="panel-body">
-			  	<h2 class="sub-header">Tambah Artikel yg Belum Terverifikasi<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
+			  	<h2 class="sub-header">TAMBAH ARTIKEL<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
 			  	<form action="{{ route('artikels.store') }}" method="post"  enctype="multipart/form-data">
 			  		{{ csrf_field() }}
 			  		 <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
-                    <label class="control-label">Gambar</label>
+                    <label class="control-label">Sampul Gambar</label>
                     <input type="file" id="foto" name="foto" class="validate" accept="image/*" required>
                 	@if ($errors->has('foto'))
                             <span class="help-block">

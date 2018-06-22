@@ -1,4 +1,4 @@
-	<div class="banner">
+	<div class="banner about-banner">
 		<div class="header">
 			<div class="container">
 				<div class="header-left">
@@ -12,20 +12,21 @@
 					<div class="w3-header-top">
 						<ul>
 							<div class="w3-button">
-								@if (Route::has('login'))
-                					<div class="top-right links">
-                    			@auth
-                        			<a href="{{ route('home') }}">Home</a>
-                    			@else
-                        			<a href="{{ route('login') }}">Login</a>
-                    			@endauth
+
+				@if (Route::has('login'))
+                	<div class="top-right links">
+                    	@auth
+                        	<a href="{{ route('member.artikel') }}">Mode Member</a>
+                    	@else
+                        	<a href="{{ route('login') }}">Login</a>
+                    	@endauth
                 	</div>
             	@endif
-							</div>
+										
 						</ul>
-					</p>
-					</div>
-					<div class="w3-header-bottom">
+							</p>
+								</div>
+									<div class="w3-header-bottom">
 						<div class="top-nav">
 							<nav class="navbar navbar-default">
 									<div class="navbar-header">
@@ -68,3 +69,9 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div>
+				<div class="w3ls-heading">
+					<h2>Destinasi</h2>	
+				</div>
+			</div>
+		</div>
+		

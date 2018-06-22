@@ -4,12 +4,12 @@
 	<div class="container">
 		<div class="col-md-12">
 			  <div class="panel-body">
-			  	<h2 class="sub-header">Edit Artikel yang Belum Terartikel<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
+			  	<h2 class="sub-header">Edit ArtikeL<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
 			  	<form action="{{ route('artikels.update',$artikel->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
-			  			<label class="control-label">Foto</label><br>
+			  			<label class="control-label">Sampul</label><br>
 			  			<input type="file" id="foto" name="foto" class="validate" value="{{ $artikel->foto }}"  accept="image/*" required>
 			  			@if ($errors->has('foto'))
                             <span class="help-block">
@@ -18,7 +18,7 @@
                         @endif
 			  		</div>
 			  		<div class="form-group {{ $errors->has('judul_artikel') ? ' has-error' : '' }}">
-			  			<label class="control-label">judul_artikel</label>	
+			  			<label class="control-label">Judul Artikel</label>	
 			  			<input type="text" name="judul_artikel" class="form-control"  value="{{ $artikel->judul_artikel }}" required>
 			  			@if ($errors->has('judul_artikel'))
                             <span class="help-block">
@@ -27,8 +27,8 @@
                         @endif
 			  		</div>
 			  		<div class="form-group {{ $errors->has('isi_artikel') ? ' has-error' : '' }}">
-			  			<label class="control-label">isi_artikel</label>	
-			  			<input type="text" name="isi_artikel" class="form-control"  value="{{ $artikel->isi_artikel }}" required>
+			  			<label class="control-label">Isi Artikel</label>	
+			  			<textarea name="isi_artikel" class="form-control" required>{{ $artikel->isi_artikel }}</textarea>
 			  			@if ($errors->has('isi_artikel'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('isi_artikel') }}</strong>

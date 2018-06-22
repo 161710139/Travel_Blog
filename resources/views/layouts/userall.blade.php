@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 	<!-- banner -->
-	@include('partialuser.nav')
+	@include('partialuser.navall')
 		
 	<!-- //newsletter -->
 	 @yield('content')

@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			  <div class="panel-body">
-			  	<h2 class="sub-header">Tambah Artikel yg Belum Terverifikasi<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
+			  	<h2 class="sub-header">Masukan Gambar<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
 			  	<form action="{{ route('galeri.store') }}" method="POST" enctype="multipart/form-data">
         		{!! csrf_field() !!}
  

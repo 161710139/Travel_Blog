@@ -4,12 +4,12 @@
 	<div class="container">
 		<div class="col-md-12">
 			  <div class="panel-body">
-			  	<h2 class="sub-header">Edit Destinasi<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
+			  	<h2 class="sub-header">Edit Galeri<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
 			  	<form action="{{ route('galeri.update',$galeri->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
-			  			<label class="control-label">Foto</label>	
+			  			<label class="control-label">Gambar</label>	
 			  			<input type="file" name="foto" class="form-control" value="{{ $galeri->foto }}"  required>
 			  			@if ($errors->has('foto'))
                             <span class="help-block">

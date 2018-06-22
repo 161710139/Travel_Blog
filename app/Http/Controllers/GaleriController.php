@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Galeri;
 use App\Artikel;
+use Laratrust\LaratrustFacade as Laratrust;
 
 class GaleriController extends Controller
 {
@@ -16,7 +17,12 @@ class GaleriController extends Controller
     public function index()
     {
         $galeri = Galeri::all();
-        return view('galeri.index',compact('galeri'));
+        if(Laratrust::hasRole('super_admin')){
+            return view('galeri.index',compact('galeri'));
+        }
+        else if(Laratrust::hasRole('member')){
+             return view('member.galeri.index',compact('galeri'));
+        }
     }
 
     /**
@@ -74,11 +80,16 @@ class GaleriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Galeri $galeri)
-    {
+    {       
         $galeri = Galeri::findOrFail($galeri->id);
         $artikel = Artikel::all();
-        $artikelselect= Galeri::findOrFail($galeri->id)->artikel_id;
-        return view('galeri.edit',compact('galeri','artikel','artikelselect'));
+        $artikelselect= Galeri::findOrFail($galeri->id)->artikel_id; 
+        if(Laratrust::hasRole('super_admin')){
+            return view('galeri.edit',compact('galeri','artikel','artikelselect'));
+        }
+        else if(Laratrust::hasRole('member')){
+             return view('member.galeri.edit',compact('galeri','artikel','artikelselect'));
+        }
     }
 
     /**

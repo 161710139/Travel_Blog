@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Artikel;
 use App\Destinasi;
 use App\User;
+use Auth;
+use Laratrust\LaratrustFacade as Laratrust;
 
 class ArtikelController extends Controller
 {
@@ -18,7 +20,14 @@ class ArtikelController extends Controller
     public function index(Artikel $artikel)
     {
         $artikel = Artikel::with('Destinasi')->get();
-        return view('artikel.index',compact('artikel'));
+        if(Laratrust::hasRole('super_admin')){
+            return view('artikel.index',compact('artikel'));
+        }
+        else if(Laratrust::hasRole('member')){
+            $artikel = Auth::user()->Artikel()->paginate(10);
+            $jumlah_data = count($artikel['Artikel']);
+            return view('member.artikel.index', compact('artikel', 'jumlah_data'));
+        }
     }
 
     /**
@@ -31,7 +40,14 @@ class ArtikelController extends Controller
         $destinasi = Destinasi::all();
         $artikel = Artikel::all();
         $user = User::all();
-        return view('artikel.create',compact('destinasi','artikel','user'));
+        if(Laratrust::hasRole('super_admin')){
+            return view('artikel.create',compact('destinasi','artikel','user'));
+        }
+        else if(Laratrust::hasRole('member')){
+            $artikel = Auth::user()->Artikel()->paginate(10);
+            $jumlah_data = count($artikel['Artikel']);
+            return view('member.artikel.create', compact('destinasi','artikel', 'jumlah_data','user'));
+        }
     }
 
     /**
@@ -82,10 +98,18 @@ class ArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        $artikel = Artikel::findOrFail($artikel->id);
-        $destinasi = Destinasi::all();
-        $destinasiselect = Artikel::findOrFail($artikel->id)->destinasi_id; 
-        return view('artikel.edit',compact('artikel','destinasi','destinasiselect'));
+        if(Laratrust::hasRole('super_admin')){
+            $artikel = Artikel::findOrFail($artikel->id);
+            $destinasi = Destinasi::all();
+            $destinasiselect = Artikel::findOrFail($artikel->id)->destinasi_id;
+            return view('artikel.edit',compact('artikel','destinasi','destinasiselect'));
+        }
+        else if(Laratrust::hasRole('member')){
+            $artikel = Artikel::findOrFail($artikel->id);
+            $destinasi = Destinasi::all();
+            $destinasiselect = Artikel::findOrFail($artikel->id)->destinasi_id;
+            return view('member.artikel.edit', compact('artikel','destinasi','destinasiselect'));
+        } 
     }
 
     /**
@@ -130,10 +154,17 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Artikel $artikel)
     {
-        $artikel =Artikel::findOrFail($id);
-        $artikel->delete();
-        return redirect()->route('artikels.index');
+        $artikel =Artikel::destroy($artikel->id);
+        if(Laratrust::hasRole('super_admin'))
+        {
+            return redirect()->route('artikels.index');    
+        }
+        else if(Laratrust::hasRole('member'))
+        {
+            return redirect()->route('artikels.index');
+        }
+        
     }
 }
