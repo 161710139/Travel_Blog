@@ -12,6 +12,7 @@
 */
 Route::get('/', 'TampilanController@index')->name('home');
 Route::get('destinasi','TampilanController@destinasi');
+Route::get('/show/{id}', 'TampilanController@show')->name('show');
 
 Auth::routes();
 
@@ -26,6 +27,7 @@ Route::resource('artikels','ArtikelController');
 
 Route::group(['prefix'=>'member', 'middleware'=>['auth','role:member|super_admin']], function(){
 	//Route::get('/','HomeController@index')->name('home');
+	Route::get('/', 'HomeController@index')->name('home');
 	Route::resource('artikels','ArtikelController');
 	Route::resource('galeri','GaleriController');
 });	

@@ -19,9 +19,8 @@ class TampilanController extends Controller
      */
     public function index()
     {   
-        $artikel= Artikel::all();
-        
-        return view('tampilan.index');
+        $artikel= Artikel::orderBy('created_at','desc')->paginate(8);
+        return view('tampilan.index', compact('artikel'));
     }
 
     /**
@@ -63,7 +62,8 @@ class TampilanController extends Controller
      */
     public function show($id)
     {
-        //
+        $artikel = Artikel::findOrFail($id);
+        return view('tampilan.show', compact('artikel'));
     }
 
     /**

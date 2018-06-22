@@ -16,7 +16,7 @@
 				@if (Route::has('login'))
                 	<div class="top-right links">
                     	@auth
-                        	<a href="{{ route('member.artikel') }}">Mode Member</a>
+                        	<a href="{{ route('home') }}">Mode Member</a>
                     	@else
                         	<a href="{{ route('login') }}">Login</a>
                     	@endauth
@@ -70,7 +70,7 @@
 			</div>
 		</div>
 				<div class="w3ls-heading">
-					<h2>Destinasi</h2>	
+					<h2>Share Travel</h2>	
 				</div>
 			</div>
 		</div>
