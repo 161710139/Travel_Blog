@@ -46,8 +46,8 @@
 	<div class="welcome">
 		<div class="container">
 			<h2 class="page-header page-header icon-subheading">Postingan Terbaru</h2>	
+			@foreach($artikel as $data)
 			<div class="w3-welcome-grids">
-				@foreach($artikel as $data)
 				<div class="col-md-7 w3-welcome-left">
 					<h5>{{ $data->judul_artikel }}</h5>
 					<div class="agileinfo-single-icons">
@@ -55,8 +55,8 @@
 						<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>{{$data->User->name}}</span></a></li>
 						<li><i class="fa fa-calendar" aria-hidden="true"></i><span>{{$data->created_at->diffForHumans()}}</span></li>
 					</ul>				
-				</div>
-					<p>{{substr($data['isi_artikel'],0,100)}}...</p>
+				    </div>
+					<p>{!!substr($data['isi_artikel'],0,100)!!}...</p>
 					<div class="w3l-button">
 						<a href="{{  route('show',$data->id) }}">More</a>
 					</div>
@@ -69,20 +69,10 @@
 			<br>
 			<hr>
 			<br>
-			<!-- <div class="w3-welcome-grids w3-welcome-bottom">
-				<div class="col-md-5 w3ls-welcome-img1 w3ls-welcome-img2">
-					<img src="../img/{{ $data->foto, $data->nama }}" style="max-height:400px;max-width:400px;margin-top:7px;" />
-				</div>
-				<div class="col-md-7 w3-welcome-left">
-					<h5>{{ $data->judul_artikel }}</h5>
-					<p>{{substr($data['isi_artikel'],0,20)}}...</span></p>
-					<div class="w3l-button">
-						<a href="single.html">More</a>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div> -->
 			@endforeach
+			<div class="text-center">
+				{!! $artikel->links(); !!}
+			</div>
 		</div>
 	</div>
 @endsection

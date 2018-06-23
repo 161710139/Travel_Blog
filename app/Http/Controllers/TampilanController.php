@@ -19,7 +19,7 @@ class TampilanController extends Controller
      */
     public function index()
     {   
-        $artikel= Artikel::orderBy('created_at','desc')->paginate(8);
+        $artikel= Artikel::orderBy('created_at','desc')->paginate(2);
         return view('tampilan.index', compact('artikel'));
     }
 
@@ -34,14 +34,16 @@ class TampilanController extends Controller
     }
     public function destinasi()
     {
-        $destinasis = Destinasi::all();
+        $destinasi = Destinasi::all();
         //return view('tampilan.destinasi');
-        return view('tampilan.destinasi', ['destinasis' => $destinasis]);
+        return view('tampilan.destinasi', ['destinasi' => $destinasi]);
     }
-    public function daftar()
+     public function daftar($id)
     {
-        // $artikel = Artikel::firstOrFaiI()
+        $destinasi = Destinasi::findOrFail($id)->Artikel()->orderBy('created_at','desc')->paginate(2);
+        return view('tampilan.daftar',compact('destinasi'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -60,10 +62,16 @@ class TampilanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+   
     public function show($id)
-    {
+    {   
+
         $artikel = Artikel::findOrFail($id);
-        return view('tampilan.show', compact('artikel'));
+        return view('tampilan.showuser', compact('artikel'));
+        if(Laratrust::hasRole('member|super_admin')){
+            $artikel = Artikel::findOrFail($id);
+            return view('tampilan.show',compact('artikel'));
+        }
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Komentar;
 use App\User;
 use App\Artikel;
-
+use Session;
 class KomentarController extends Controller
 {
     /**
@@ -27,9 +27,7 @@ class KomentarController extends Controller
      */
     public function create()
     {
-        $user = User::all();
-        $artikel = Artikel::all();
-        return view('komentar.create',compact('user','artikel'));
+
     }
 
     /**
@@ -38,15 +36,30 @@ class KomentarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Artikel $artikel , $artikel_id)
     {
         $this->validate($request, [
             'user_id'=>'required',
             'artikel_id' => 'required',
-            'komentar'=>'required'
+            'komentar'=>'required|min:5|max:200'
         ]);
-        $komentar = Komentar::create($request->all());
-        return redirect()->route('komentars.index');
+        $komentar =  Komentar::create($request->all());
+        return redirect()->back();
+
+        // Komentar::create([
+        //     'post_id'=> $post->id,
+        //     'user_id'=> auth()->id();
+        //     'komentar'=> $
+        // ])
+        // $artikel = Artikel::find($artikel_id);
+        // $komentar = new Komentar();
+        // $komentar->user_id = $request->user_id;
+        // $komentar->komentar = $request->komentar;
+        // $komentar = Artikel()->associate($artikel);
+        // $komentar->save();
+        // Session::flash('success','Komentar telah ditambahkan');
+        // return redirect()->route('show');
+        //dd(request('komentar'));
     }
 
     /**

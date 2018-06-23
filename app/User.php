@@ -31,4 +31,7 @@ class User extends Authenticatable
     public function Artikel(){
         return $this->hasMany('App\Artikel','user_id');
     }
+    public function Komentar(){
+        return $this->hasMany('App\Komentar','komentar_id');
+    }
 }

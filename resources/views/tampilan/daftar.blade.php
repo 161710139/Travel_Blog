@@ -2,41 +2,36 @@
 @section('content')
 <div class="codes icons main-grid-border">
 	<div class="container"> 
-		<div class="w3-welcome-grids w3-welcome-bottom">
-				<div class="col-md-5 w3ls-welcome-img1 w3ls-welcome-img2">
-					<img src="images/3.jpg" alt="" />
+		<div class="welcome">
+		<div class="container">
+			<h2 class="page-header page-header icon-subheading">Postingan Terbaru</h2>	
+			@foreach($destinasi->Artikel()->get() as $data)
+			<div class="w3-welcome-grids">
+				<div class="col-md-7 w3-welcome-left">
+					<h5>{{ $data->judul_artikel }}</h5>
+					<div class="agileinfo-single-icons">
+					<ul>
+						<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>{{$data->User->name}}</span></a></li>
+						<li><i class="fa fa-calendar" aria-hidden="true"></i><span>{{$data->created_at->diffForHumans()}}</span></li>
+					</ul>				
+				    </div>
+					<p>{!!substr($data['isi_artikel'],0,100)!!}...</p>
+					<div class="w3l-button">
+						<a href="{{  route('show',$data->id) }}">More</a>
+					</div>
 				</div>
-					<div class="col-md-7 w3-welcome-left">
-						<h5>Lorem ipsum dolor sit amet</h5>
-							<p>Ut fringilla euismod sagittis. Cras semper ante sapien, in ornare nisi euismod eu. Morbi dapibus est non leo vestibulum aliquet. Sed viverra nisi pharetra, scelerisque nisi eu, tempus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In pellentesque, lectus at auctor luctus, lacus nibh dignissim ante, sed maximus arcu odio vitae lectus. <span>Phasellus vestibulum velit sed nisi ultricies scelerisque. Vivamus ligula mauris, euismod in dictum id, tempus ac odio. Etiam tristique felis eros, tincidunt interdum elit gravida et. Donec porttitor vehicula tortor, malesuada aliquet nibh finibus ac. Maecenas consectetur nisi ipsum, blandit finibus quam tristique vitae.</span></p>
-						<div class="w3l-button">
-						<a href="single.html">More</a>
-						</div>
-					</div>
-							<div class="clearfix"> </div>
-					</div>
-<script src="{{ ('assets/user/js/responsiveslides.min.js') }}"></script>
-<script>
-	// You can also use "$(window).load(function() {"
-	$(function () {
-	  // Slideshow 4
-	  $("#slider4").responsiveSlides({
-		auto: true,
-		pager:true,
-		nav:true,
-		speed: 500,
-		namespace: "callbacks",
-		before: function () {
-		  $('.events').append("<li>before event fired.</li>");
-		},
-		after: function () {
-		  $('.events').append("<li>after event fired.</li>");
-		}
-	  });
-
-	});
- </script>
-</div>
-</div>
-<!--banner Slider starts Here-->
+				<div class="col-md-5 w3ls-welcome-img1">
+					<img src="../img/{{ $data->foto, $data->nama }}" style="max-height:400px;max-width:400px;margin-top:7px;" />
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<br>
+			<hr>
+			<br>
+			@endforeach
+			<div class="text-center">
+				{!! $destinasi->links(); !!}
+			</div>
+		</div>
+	</div>
 @endsection

@@ -2,8 +2,8 @@
 		<div class="container">
 			<div class="agile-footer-grids">
 				<div class="col-md-4 agile-footer-grid">
-					<h4>History of Us</h4>
-					<p>Pellentesque urna ex, ultricies a nunc at, pretium maximus nisi. Vestibulum non auctor diam. Mauris eget consectetur mauris. <span>Aenean leo elit, accumsan vel elit vitae, mattis ultricies lacus. Cras consectetur justo lorem, sed dictum sapien eleifend at.</span></p>
+					<h4>Quotes</h4>
+					<p>"Setiap ini memiliki tempat "</p>
 				</div>
 				<div class="col-md-4 agile-footer-grid">
 					<h4>Twitter Posts</h4>

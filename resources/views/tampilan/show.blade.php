@@ -13,8 +13,50 @@
 						<li><i class="fa fa-calendar" aria-hidden="true"></i><span>{{$artikel->created_at->diffForHumans()}}</span></li>
 					</ul>				
 				</div>
-				<p>{{$artikel->isi_artikel}}</p>
+				<p>{!!$artikel->isi_artikel!!}</p>
+				<br>
+				<hr>
 			</div>
+			<h3>Comments</h3>
+				@foreach($artikel->Komentar()->get() as $komen)
+				<div class="agileits_three_comment_grid">
+					<div class="agileits_tom_right">
+						<div class="hardy">
+							<h4>{{$komen->User->name}}</h4>
+							<p>{{$komen->created_at->diffForHumans()}}</p>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="lorem">{{$komen->komentar}}</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				@endforeach`
+					<div class="w3_leave_comment">
+						<h3>Tinggalkan Komentar</h3>
+						<form action="{{route('show.komentar.store', $artikel->id)}}" method="post">
+							{{csrf_field()}}
+							<div class="form-group {{ $errors->has('user_id') ? 'has error' : '' }}">
+			  				<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+			  			<!-- </select> -->
+			  				@if ($errors->has('user_id'))
+			  					<span class="help-block">
+			  						<strong>{{ $errors->first('user_id') }}</strong>
+			  					</span>
+			  				@endif
+			  				</div>
+			  				<div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
+			  				<input type="hidden" name="artikel_id" value="{{ $artikel->id }}">
+			  			<!-- </select> -->
+			  				@if ($errors->has('user_id'))
+			  					<span class="help-block">
+			  						<strong>{{ $errors->first('user_id') }}</strong>
+			  					</span>
+			  				@endif
+			  				</div>
+							<textarea placeholder="Masukan Komentar" name="komentar" required></textarea>
+							<input type="submit" value="Send">
+						</form>
+					</div>
 <script src="{{ ('assets/user/js/responsiveslides.min.js') }}"></script>
 <script>
 	// You can also use "$(window).load(function() {"

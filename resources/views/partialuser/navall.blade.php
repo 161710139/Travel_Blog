@@ -16,7 +16,7 @@
 				@if (Route::has('login'))
                 	<div class="top-right links">
                     	@auth
-                        	<a href="{{ route('home') }}">Mode Member</a>
+                        	<a href="{{ route('home') }}">Mode Penulis</a>
                     	@else
                         	<a href="{{ route('login') }}">Login</a>
                     	@endauth
@@ -40,16 +40,15 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav">
-										<li><a class="active" href="index.html">Home</a></li>
-										<li><a href="gallery.html">Destinasi</a></li>
-										<li><a href="about.html">About</a></li>
+										<li><a href="{{route('awal')}}"><i class="glyphicon glyphicon-home"></i>&nbsp&nbspHome</a></li>
+										<li><a href="{{route('destinasi')}}"><i class="glyphicon glyphicon-map-marker"></i>&nbsp&nbspDestinasi</a></li>
+										<li><a href="#"><i class="glyphicon glyphicon-user"></i>&nbsp&nbspAbout</a></li>
 										<!-- <li class=""><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Codes<span class="caret"></span></a>
 											<ul class="dropdown-menu">
 												<li><a class="hvr-bounce-to-bottom" href="icons.html">Icons</a></li>
 												<li><a class="hvr-bounce-to-bottom" href="typography.html">Typography</a></li>          
 											</ul>
 										</li>			 -->					
-										<li><a href="contact.html">Contact</a></li>
 									</ul>	
 									<div class="clearfix"> </div>
 								</div>	
