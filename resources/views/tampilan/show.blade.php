@@ -17,6 +17,25 @@
 				<br>
 				<hr>
 			</div>
+			<div class="gallery">
+						<div class="container">
+							@foreach($artikel->Galeri()->get() as $data)
+							<div class="gallery-grids">
+									<div class="col-md-4 gallery-grid">
+										<div class="grid">
+											<figure class="effect-apollo">
+												<a class="example-image-link" href="../img/{{ $data->foto, $data->nama }}">
+													<img src="../img/{{ $data->foto }}" alt="" />
+													<figcaption>
+													</figcaption>	
+												</a>
+											</figure>
+										</div>
+									</div>
+								</div>
+								@endforeach
+							</div>
+						</div>
 			<h3>Comments</h3>
 				@foreach($artikel->Komentar()->get() as $komen)
 				<div class="agileits_three_comment_grid">
@@ -35,21 +54,12 @@
 						<h3>Tinggalkan Komentar</h3>
 						<form action="{{route('show.komentar.store', $artikel->id)}}" method="post">
 							{{csrf_field()}}
-							<div class="form-group {{ $errors->has('user_id') ? 'has error' : '' }}">
-			  				<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-			  			<!-- </select> -->
-			  				@if ($errors->has('user_id'))
-			  					<span class="help-block">
-			  						<strong>{{ $errors->first('user_id') }}</strong>
-			  					</span>
-			  				@endif
-			  				</div>
 			  				<div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
 			  				<input type="hidden" name="artikel_id" value="{{ $artikel->id }}">
 			  			<!-- </select> -->
-			  				@if ($errors->has('user_id'))
+			  				@if ($errors->has('artikel_id'))
 			  					<span class="help-block">
-			  						<strong>{{ $errors->first('user_id') }}</strong>
+			  						<strong>{{ $errors->first('artikel_id') }}</strong>
 			  					</span>
 			  				@endif
 			  				</div>

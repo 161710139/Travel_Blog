@@ -29,9 +29,8 @@
 			<hr>
 			<br>
 			@endforeach
-			<div class="text-center">
-				{!! $destinasi->links(); !!}
-			</div>
 		</div>
 	</div>
+</div>
+</div>
 @endsection

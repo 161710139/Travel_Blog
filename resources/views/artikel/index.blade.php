@@ -38,7 +38,7 @@
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
 				    	<td>
-				    	<a href="" class="thumbnail">
+				    	<a href="../img/{{ $data->foto, $data->nama }}" class="thumbnail">
                             <img src="../img/{{ $data->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
                         </td>
 				    	<td>{{ $data->judul_artikel}}</td>
@@ -48,7 +48,6 @@
 						<td>
 							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
 						</td>
-						<a class="btn btn-success" href="{{ route('artikels.show',$data->id)}}"></a>
 						<td>
 							<form method="post" action="{{ route('artikels.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">

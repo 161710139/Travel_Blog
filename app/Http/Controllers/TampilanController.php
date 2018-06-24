@@ -9,6 +9,9 @@ use App\Galeri;
 use App\Komentar; 
 use App\Role;
 use App\User;
+use Auth;
+use Laratrust\LaratrustFacade as Laratrust;
+
 
 class TampilanController extends Controller
 {
@@ -40,7 +43,7 @@ class TampilanController extends Controller
     }
      public function daftar($id)
     {
-        $destinasi = Destinasi::findOrFail($id)->Artikel()->orderBy('created_at','desc')->paginate(2);
+        $destinasi = Destinasi::findOrFail($id);
         return view('tampilan.daftar',compact('destinasi'));
     }
 
@@ -67,11 +70,7 @@ class TampilanController extends Controller
     {   
 
         $artikel = Artikel::findOrFail($id);
-        return view('tampilan.showuser', compact('artikel'));
-        if(Laratrust::hasRole('member|super_admin')){
-            $artikel = Artikel::findOrFail($id);
-            return view('tampilan.show',compact('artikel'));
-        }
+        return view('tampilan.show',compact('artikel'));
     }
 
     /**

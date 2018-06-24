@@ -28,7 +28,7 @@
 			  		</div>
 			  		<div class="form-group {{ $errors->has('isi_artikel') ? 'has error' : ''}} ">
 			  			<label class="control-label">Isi Artikel</label>
-			  			<Textarea name="isi_artikel" id="konten" class="form-control" required></Textarea>
+			  			<Textarea name="isi_artikel" id="isi_artikel" class="form-control" required></Textarea>
 			  			@if ($errors->has('isi_artikel'))
 			  			<span class="help-block">
 			  				<strong>{{ $errors->first('isi_artikel') }}</strong>
@@ -72,4 +72,9 @@
 		</div>
 	</div>
 </div>
+@endsection
+@section('js')
+<script>
+    CKEDITOR.replace( 'isi_artikel' );
+</script>
 @endsection

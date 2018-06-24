@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Komentar;
 use App\User;
 use App\Artikel;
+use Auth;
 use Session;
 class KomentarController extends Controller
 {
@@ -38,19 +39,18 @@ class KomentarController extends Controller
      */
     public function store(Request $request, Artikel $artikel , $artikel_id)
     {
-        $this->validate($request, [
-            'user_id'=>'required',
-            'artikel_id' => 'required',
-            'komentar'=>'required|min:5|max:200'
+        // $this->validate($request, [
+        //     'user_id'=>'required',
+        //     'artikel_id' => 'required',
+        //     'komentar'=>'required|min:5|max:200'
+        // ]);
+        // $komentar =  Komentar::create($request->all());
+        Komentar::create([
+            'artikel_id'=> $request->artikel_id,
+            'user_id'=>  Auth::user()->id ,
+            'komentar'=> $request->komentar,
         ]);
-        $komentar =  Komentar::create($request->all());
-        return redirect()->back();
-
-        // Komentar::create([
-        //     'post_id'=> $post->id,
-        //     'user_id'=> auth()->id();
-        //     'komentar'=> $
-        // ])
+         return redirect()->back();
         // $artikel = Artikel::find($artikel_id);
         // $komentar = new Komentar();
         // $komentar->user_id = $request->user_id;

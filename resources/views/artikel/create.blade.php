@@ -27,7 +27,7 @@
 			  		</div>
 			  		<div class="form-group {{ $errors->has('isi_artikel') ? 'has error' : ''}} ">
 			  			<label class="control-label">Isi Artikel</label>
-			  			<Textarea id="konten" class="form-control" name="isi_artikel" required></Textarea>
+			  			<Textarea id="isi_artikel" class="form-control" name="isi_artikel" required></Textarea>
 			  			@if ($errors->has('isi_artikel'))
 			  			<span class="help-block">
 			  				<strong>{{ $errors->first('isi_artikel') }}</strong>

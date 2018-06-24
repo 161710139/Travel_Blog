@@ -13,7 +13,9 @@
 Route::get('/', 'TampilanController@index')->name('awal');
 Route::get('destinasi','TampilanController@destinasi')->name('destinasi');
 Route::get('/show/{id}', 'TampilanController@show')->name('show');
-Route::post('/show/{id}/komentar','KomentarController@store')->name('show.komentar.store');
+Route::group(['prefix'=>'/show/{id}/komentar', 'middleware'=>['auth','role:member|super_admin']], function(){
+Route::post('/','KomentarController@store')->name('show.komentar.store');
+});
 Route::get('/destinasi/{id}', 'TampilanController@daftar')->name('destinasi.daftarartikel');
 
 Auth::routes();
