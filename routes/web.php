@@ -26,6 +26,7 @@ Route::resource('member','MemberController');
 Route::resource('destinasis','DestinasiController');
 Route::resource('komentars','KomentarController');
 Route::resource('galeri','GaleriController');
+Route::get('/artikel/{id}', 'GaleriController@create')->name('creategaleri');
 Route::resource('artikels','ArtikelController');
 });
 
@@ -33,6 +34,8 @@ Route::group(['prefix'=>'member', 'middleware'=>['auth','role:member|super_admin
 	//Route::get('/','HomeController@index')->name('home');
 	Route::get('/', 'HomeController@index')->name('home');
 	Route::resource('artikels','ArtikelController');
+	Route::get('/artikel/{id}', 'GaleriController@create')->name('creategaleri');
+	Route::post('/artikel/{id}/create', 'GaleriController@store')->name('creategaleri.store');
 	Route::resource('galeri','GaleriController');
 });	
 

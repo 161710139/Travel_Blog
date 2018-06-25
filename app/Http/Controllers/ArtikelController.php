@@ -75,7 +75,7 @@ class ArtikelController extends Controller
         $artikel->foto = $filename;
         $artikel->save();
         }
-        return redirect()->route('artikels.index');
+        return redirect()->route('creategaleri', $artikel->id);
     }
 
     /**

@@ -30,9 +30,9 @@ class GaleriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $artikel = Artikel::all();
+        $artikel = Artikel::findOrFail($id);
         return view('galeri.create',compact('artikel'));
     }
 

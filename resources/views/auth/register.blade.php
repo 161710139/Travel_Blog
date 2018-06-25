@@ -24,6 +24,14 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group {{ $errors->has('role_id') ? 'has error' : '' }}">
+                            <input type="text" name="role_id" value="{{ old('role_id') }}">
+                        @if ($errors->has('role_id'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('role_id') }}</strong>
+                        </span>
+                        @endif
+                    </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
