@@ -27,7 +27,7 @@
                         </li> -->
                         <li>
                             <a href="{{ route('destinasis.index') }}">
-                                <i class="fas fa-fighter-jet"></i> Destinasi</a>
+                                <i class="fas fa-fighter-jet"></i>Destinasi</a>
                         </li>
                         <li>
                             <a href="{{ route('artikels.index') }}">
@@ -40,6 +40,10 @@
                         <li>
                             <a href="{{ route('komentars.index') }}">
                                 <i class="fas fa-comments"></i>Komentar</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('daftarmember.index') }}">
+                                <i class="fas fa-user"></i>Member</a>
                         </li>
                         <!-- <li>
                             <a href="map.html">

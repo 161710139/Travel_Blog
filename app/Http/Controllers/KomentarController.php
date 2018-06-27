@@ -7,7 +7,6 @@ use App\Komentar;
 use App\User;
 use App\Artikel;
 use Auth;
-use Session;
 class KomentarController extends Controller
 {
     /**

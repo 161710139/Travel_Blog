@@ -22,7 +22,7 @@ class TampilanController extends Controller
      */
     public function index()
     {   
-        $artikel= Artikel::orderBy('created_at','desc')->paginate(2);
+        $artikel= Artikel::orderBy('created_at','desc')->paginate(8);
         return view('tampilan.index', compact('artikel'));
     }
 

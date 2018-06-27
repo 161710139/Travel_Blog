@@ -68,6 +68,9 @@
     <script src="{{ asset('assets/admin/vendor/bootstrap-4.1/popper.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
     <!-- Vendor JS       -->
+     <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
     <script src="{{ asset('assets/admin/vendor/slick/slick.min.js') }}">
     </script>
     <script src="{{ asset('assets/admin/vendor/wow/wow.min.js') }}"></script>
@@ -82,25 +85,9 @@
     <script src="{{ asset('assets/admin/vendor/chartjs/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/select2/select2.min.js') }}">
     </script>
-    
-    @yield('js')
-    @stack('scripts')
-    <!-- Main JS-->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
-    <!-- <script type="text/javascript">
-
-    $(document).ready(function() {
-
-      $(".btn-success").click(function(){ 
-          var html = $(".clone").html();
-          $(".increment").after(html);
-      });
-
-      $("body").on("click",".btn-danger",function(){ 
-          $(this).parents(".control-group").remove();
-      });
-
-    });
+    @yield('js')
+    <!-- Main JS-->
 
 </script> -->
 

@@ -19,7 +19,7 @@ class ArtikelController extends Controller
 
     public function index(Artikel $artikel)
     {
-        $artikel = Artikel::with('Destinasi')->get();
+        $artikel = Artikel::orderBy('created_at','desc')->paginate(8);
         if(Laratrust::hasRole('super_admin')){
             return view('artikel.index',compact('artikel'));
         }

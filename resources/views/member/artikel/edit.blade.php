@@ -67,3 +67,8 @@
 	</div>
 </div>
 @endsection
+@section('js')
+<script>
+    CKEDITOR.replace( 'isi_artikel' );
+</script>
+@endsection

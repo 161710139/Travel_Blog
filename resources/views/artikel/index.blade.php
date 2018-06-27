@@ -16,7 +16,7 @@
       <!-- Breadcrumbs-->
 			  	<div class="row">
                 <div class="col-lg-11">
-                    <h2 class="title-1 m-b-25">Earnings By Items</h2>
+                    <h2 class="title-1 m-b-25">Data Artikel Semua User</h2>
                     <a href="{{ route('artikels.create') }}" class="btn btn-primary">Create</a>
                         <div class="table-responsive table--no-card m-b-40">
                         <table id="example" class="table display table-borderless table-striped table-earning">
@@ -24,7 +24,6 @@
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
-			  		  <th>Sampul</th>
 					  <th>Judul Artikel</th>
 					  <th>Penulis</th>
 					  <th>Destinasi</th>
@@ -37,16 +36,15 @@
 				  		@foreach($artikel as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>
-				    	<a href="../img/{{ $data->foto, $data->nama }}" class="thumbnail">
-                            <img src="../img/{{ $data->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
-                        </td>
 				    	<td>{{ $data->judul_artikel}}</td>
 				    	<td>{{ $data->User->name}}</td>
 						<td>{{$data->Destinasi->nama_destinasi}}</td>
 						<td>{{ $data->created_at->diffForHumans() }}</td>
 						<td>
 							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
+						</td>
+						<td>
+							<a class="btn btn-success" href="{{ route('show',$data->id) }}">Show</a>
 						</td>
 						<td>
 							<form method="post" action="{{ route('artikels.destroy',$data->id) }}">
@@ -56,7 +54,10 @@
 							</form>
 						</td>
 				      </tr>
-				      @endforeach	
+				      @endforeach
+				      <div class="text-center">
+						{!! $artikel->links(); !!}
+					</div>	
 				  	</tbody>
 				  </table>
 				</div>

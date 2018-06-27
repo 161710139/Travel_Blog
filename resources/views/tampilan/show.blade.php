@@ -11,6 +11,7 @@
 					<ul>
 						<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>{{$artikel->User->name}}</span></a></li>
 						<li><i class="fa fa-calendar" aria-hidden="true"></i><span>{{$artikel->created_at->diffForHumans()}}</span></li>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><span>{{$artikel->Destinasi->nama_destinasi}}</span></li>
 					</ul>				
 				</div>
 				<p>{!!$artikel->isi_artikel!!}</p>
@@ -18,6 +19,8 @@
 				<hr>
 			</div>
 			<div class="gallery">
+				<h3>Galeri</h3>
+				<hr>
 						<div class="container">
 							@foreach($artikel->Galeri()->get() as $data)
 							<div class="gallery-grids">
@@ -40,6 +43,9 @@
 				@foreach($artikel->Komentar()->get() as $komen)
 				<div class="agileits_three_comment_grid">
 					<div class="agileits_tom_right">
+						<div class="agileits_tom">
+						<img src="{{asset('assets/user/images/user.png')}}" alt=" " class="img-responsive">
+						</div>
 						<div class="hardy">
 							<h4>{{$komen->User->name}}</h4>
 							<p>{{$komen->created_at->diffForHumans()}}</p>
@@ -64,7 +70,15 @@
 			  				@endif
 			  				</div>
 							<textarea placeholder="Masukan Komentar" name="komentar" required></textarea>
-							<input type="submit" value="Send">
+							@if (Route::has('login'))
+                    			@auth
+                        			<input type="submit" value="Send">
+		                    	@else
+		                    	<div class="w3l-button">
+									<a href="{{ route('login') }}"><i class="fa fa-unlock-alt"></i>&nbsp&nbspLogin</a></a>
+								</div>
+		                    	@endauth
+		            		@endif
 						</form>
 					</div>
 <script src="{{ ('assets/user/js/responsiveslides.min.js') }}"></script>

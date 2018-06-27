@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class MemberController extends Controller
 {
@@ -13,7 +14,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('member.index',compact('user'));
     }
 
     /**
@@ -79,6 +81,6 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $user = User::destroy($id);
+        return redirect()->back();    }
 }

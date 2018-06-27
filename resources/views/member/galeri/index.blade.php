@@ -3,16 +3,10 @@
 <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
-        </ol>
 			  	<div class="row">
-                <div class="col-lg-11">
-                    <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('galeri.create') }}" class="btn btn-primary">Create</a>
+                <div class="col-lg-11">  
+                <h2>Daftar Gambar</h2>
+                <hr>                
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>

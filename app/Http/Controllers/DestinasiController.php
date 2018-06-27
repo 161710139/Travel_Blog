@@ -96,8 +96,7 @@ class DestinasiController extends Controller
      */
     public function destroy($id)
     {
-        $destinasis = Destinasi::findOrFail($id);
-        $destinasis->delete();
-        return redirect()->route('destinasis.index');
+        $destinasi =Destinasi::destroy($id);
+        return redirect()->back();
     }
 }

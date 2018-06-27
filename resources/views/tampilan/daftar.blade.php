@@ -15,7 +15,7 @@
 						<li><i class="fa fa-calendar" aria-hidden="true"></i><span>{{$data->created_at->diffForHumans()}}</span></li>
 					</ul>				
 				    </div>
-					<p>{!!substr($data['isi_artikel'],0,100)!!}...</p>
+					<p>{!!substr($data['isi_artikel'],0,500)!!}...</p>
 					<div class="w3l-button">
 						<a href="{{  route('show',$data->id) }}">More</a>
 					</div>

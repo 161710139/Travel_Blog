@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Galeri;
 use App\Artikel;
+use Illuminate\Support\Facades\Session;
 use Laratrust\LaratrustFacade as Laratrust;
 
 class GaleriController extends Controller
@@ -31,9 +32,14 @@ class GaleriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($id)
-    {
+    {   
         $artikel = Artikel::findOrFail($id);
-        return view('galeri.create',compact('artikel'));
+        if(Laratrust::hasRole('super_admin')){
+            return view('galeri.create',compact('artikel'));
+        }
+        else if(Laratrust::hasRole('member')){
+            return view('member.galeri.create',compact('artikel'));
+        }
     }
 
     /**
@@ -58,7 +64,8 @@ class GaleriController extends Controller
         $galeri->foto = $filename;
         $galeri->save();
         }
-        return redirect()->route('galeri.index');
+        Session::flash('success_message','Gambar Berhasil Ditambahkan');
+        return redirect()->back();
     }
 
     /**

@@ -7,6 +7,11 @@
 			  	<h2 class="sub-header">Masukan Gambar<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
 			  	<form action="{{route('creategaleri.store', $artikel->id)}}" method="post" enctype="multipart/form-data">
         		{!! csrf_field() !!}
+        		@if ($message = Session::get('success'))
+	  				<div class="alert alert-success alert-block">
+		  			<strong>{{ $message }}</strong>
+	  				</div>
+				@endif
  
                <div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
 			  		<div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
@@ -26,6 +31,7 @@
                 </div>
  
                 <input class="btn btn-primary" type="submit" value="Upload">
+                <a href="{{route('artikels.index')}}"><input class="btn btn-success" type="submit" name="finish" value="Finish"></a>
             </form>
  
         @if(count($errors) > 0)
@@ -38,6 +44,8 @@
             </div>
         @endif
 			  	</form>
+			  	<hr>
+			  	<h5><i>*jika setelah memasukan gambar kembali ke halaman ini , maka teruslah menambah gambar</i></h5>
 			  </div>
 			</div>
 		</div>

@@ -4,30 +4,29 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
 			  	<div class="row">
-                <div class="col-lg-11">
-                    <h2 class="title-1 m-b-25">Daftar Destinasi</h2>
-                    <a href="{{ route('destinasis.create') }}" class="btn btn-primary">Create</a>
+                <div class="col-lg-11">  
+                <h2>Member</h2>
+                <hr>                
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>
-				  	<thead>
+                        <thead>
 			  		<tr>
 			  		  <th>No</th>
-					  <th>Nama Destinasi</th>
-					  <th colspan="3">Action</th>
+					  <th>Nama Member</th>
+					  <th>Email</th>
+					  <th colspan="3">Option</th>
 			  		</tr>
 				  	</thead>
 				  	<tbody>
 				  		@php $no = 1; @endphp
-				  		@foreach($destinasis as $data)
+				  		@foreach($user as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>{{ $data->nama_destinasi}}</td>
+				    	<td>{{ $data->name }}</td>
+				    	<td>{{ $data->email}}</td>
 						<td>
-							<a class="btn btn-warning" href="{{ route('destinasis.edit',$data->id) }}">Edit</a>
-						</td>
-						<td>
-							<form method="post" action="{{ route('destinasis.destroy',$data->id) }}">
+							<form method="post" action="{{ route('daftarmember.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 

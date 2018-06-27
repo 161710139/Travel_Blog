@@ -3,16 +3,9 @@
 <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
-        </ol>
 			  	<div class="row">
                 <div class="col-lg-11">
-                    <h2 class="title-1 m-b-25">Earnings By Items</h2>
-                    <a href="{{ route('komentars.create') }}" class="btn btn-primary">Create</a>
+                    <h2 class="title-1 m-b-25">Komentar</h2>
                         <div class="table-responsive table--no-card m-b-40">
                         <table class="table table-borderless table-striped table-earning">
                         <br>
@@ -20,7 +13,6 @@
 			  		<tr>
 			  		  <th>No</th>
 					  <th>Nama</th>
-					  <th>Email</th>
 					  <th>Komentar</th>
 					  <th>Artikel</th>
 					  <th colspan="3">Action</th>
@@ -32,12 +24,8 @@
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
 				    	<td>{{ $data->User->name}}</td>
-				    	<td>{{ $data->User->email}}</td>
-				    	<td>{{ $data->komentar}}</td>
+				    	<td>{!!substr($data['komentar'],0,10)!!}....More</td>
 						<td>{{$data->Artikel->judul_artikel}}</td>
-						<td>
-							<a class="btn btn-warning" href="{{ route('komentars.edit',$data->id) }}">Edit</a>
-						</td>
 						<td>
 							<form method="post" action="{{ route('komentars.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">

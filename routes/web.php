@@ -24,8 +24,10 @@ Route::group(['prefix'=>'superadmin', 'middleware'=>['auth','role:super_admin']]
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('member','MemberController');
 Route::resource('destinasis','DestinasiController');
+Route::post('destinasis/{$destinasi->id}', 'DestinasiController@destroy')->name('destinasi.destroy');
 Route::resource('komentars','KomentarController');
 Route::resource('galeri','GaleriController');
+Route::resource('daftarmember','MemberController');
 Route::get('/artikel/{id}', 'GaleriController@create')->name('creategaleri');
 Route::resource('artikels','ArtikelController');
 });
