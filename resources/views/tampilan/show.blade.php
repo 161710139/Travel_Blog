@@ -3,7 +3,7 @@
 <div class="single">
 		<div class="container">
 			<div class="agileits-single-img">
-				<center><img src="../img/{{ $artikel->foto, $artikel->nama }}" style="max-height:400px;max-width:800px;" />
+				<center><img src="../img/{{ $artikel->foto, $artikel->nama }}" style="max-height:700px;max-width:700px;" />
 				</center><br><br>
 				<h4>{{ $artikel->judul_artikel }}</h4>
 				<hr>
@@ -104,5 +104,6 @@
  </script>
 </div>
 </div>
+@endif
 <!--banner Slider starts Here-->
 @endsection

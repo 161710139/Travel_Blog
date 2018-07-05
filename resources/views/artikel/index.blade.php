@@ -1,26 +1,19 @@
 @extends('layouts.admin')
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/datatables/css/jquery.dataTables.css') }}"/>
-@endsection
-@section('js')
-<script type="text/javascript" src="{{ asset('assets/admin/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-    $('#example').DataTable();
-    } );
-    </script>
-@endsection
 @section('content')
-<div class="content-wrapper">
+<div class="section__content section__content--p30">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-			  	<div class="row">
-                <div class="col-lg-11">
-                    <h2 class="title-1 m-b-25">Data Artikel Semua User</h2>
-                    <a href="{{ route('artikels.create') }}" class="btn btn-primary">Create</a>
-                        <div class="table-responsive table--no-card m-b-40">
-                        <table id="example" class="table display table-borderless table-striped table-earning">
-                        <br>
+        <div class="row m-t-30">
+            <div class="col-md-12">
+                <div class="m-b-10">
+                    <a href="{{ route('artikels.create') }}" class="btn btn-outline-danger">
+                        <i class="fa fa-pencil-square-o"></i>    
+                        Tambah Data
+                    </a>
+                    
+                </div>
+                <!-- DATA TABLE-->
+                <div class="table-responsive m-b-40">
+                    <table class="table table-borderless table-data3">
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
@@ -28,6 +21,7 @@
 					  <th>Penulis</th>
 					  <th>Destinasi</th>
 					  <th>Created At</th>
+					  <th colspan="2">Status</th>
 					  <th colspan="3">Action</th>
 			  		</tr>
 				  	</thead>
@@ -40,6 +34,18 @@
 				    	<td>{{ $data->User->name}}</td>
 						<td>{{$data->Destinasi->nama_destinasi}}</td>
 						<td>{{ $data->created_at->diffForHumans() }}</td>
+						<td> @if($data->status == 1)
+                                <form action="{{ route('artikel.publish',$data->id) }}" method="post">
+                                    @csrf
+                                <button type="submit" class="btn btn-warning">unPublish</button>
+                                </form>
+                                @elseif($data->status == 0)
+                                <form action="{{ route('artikel.publish',$data->id) }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-info" type="submit">Publish</button>
+                                </form>
+                                </td>
+                                @endif
 						<td>
 							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
 						</td>
@@ -60,10 +66,13 @@
 					</div>	
 				  	</tbody>
 				  </table>
-				</div>
-			  </div>
-			</div>	
-		</div>
-	</div>
+                </div>
+                <!-- END DATA TABLE-->
+            </div>
+        </div>
+        
+    </div>
 </div>
+
+
 @endsection

@@ -10,7 +10,7 @@
 						<div class="form-group {{ $errors->has('nama_destinasi') ? 'has error' : '' }}">
 							@foreach($destinasi as $data)
 							<div class="icon-box col-md-3 col-sm-4">
-								<a href="{{  route('destinasi.daftarartikel',$data->id) }}" value="{{$data->id}}"><i class="fa fa-asl-interpreting" aria-hidden="true"></i>{{ $data->nama_destinasi }}</a>
+								<a href="{{  route('destinasi.daftarartikel',$data->id) }}" value="{{$data->id}}"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>{{ $data->nama_destinasi }}</a>
 							</div>
 							@endforeach
 						</div> 

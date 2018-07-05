@@ -106,4 +106,14 @@ class TampilanController extends Controller
     {
         //
     }
+    public function search(Request $request){
+        if($request->search == ""){
+            $artikel = search::paginate(8);
+        return view('tampilan.result',compact('artikel'));
+        }else {
+            $artikel = Artikel::where('judul_artikel', 'LIKE','%'.$request->search.'%')->paginate(8);
+            $artikel->appends($request->only('search'));
+            return view('tampilan.result',compact('artikel'));
+        }
+    }
 }

@@ -46,6 +46,7 @@
 	<div class="welcome">
 		<div class="container">
 			<h2 class="page-header page-header icon-subheading">Postingan Terbaru</h2>	
+			@if(count($artikel)>0)
 			@foreach($artikel as $data)
 			@if($data->status == 0)
     		@else
@@ -77,6 +78,9 @@
 			<div class="text-center">
 				{!! $artikel->links(); !!}
 			</div>
+			@else
+			<h3><b><i>Maaf Tidak ada artikel yang ditemukan</i></b><</h3>
+			@endif
 		</div>
 	</div>
 @endsection

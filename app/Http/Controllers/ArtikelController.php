@@ -167,4 +167,17 @@ class ArtikelController extends Controller
         }
         
     }
+     public function Publish($id)
+    {
+        $artikel = Artikel::find($id);
+
+        if ($artikel->status === 1) {
+            $artikel->status = 0;
+        } else {
+            $artikel->status= 1;
+        }
+
+        $artikel->save();
+        return redirect()->route('artikels.index');
+    }
 }

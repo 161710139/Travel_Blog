@@ -29,7 +29,6 @@
     <link href="{{ asset('assets/admin/vendor/slick/slick.css" rel="stylesheet') }}" media="all">
     <link href="{{ asset('assets/admin/vendor/select2/select2.min.css" rel="stylesheet') }}" media="all">
     <link href="{{ asset('assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
-    @yield('css')
 
     <!-- Main CSS-->
     <link href="{{ asset('assets/admin/css/theme.css') }}" rel="stylesheet" media="all">
@@ -37,30 +36,20 @@
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        @include('partialsmember.nav-mobile')
-        <!-- END HEADER MOBILE-->
-
-        <!-- MENU SIDEBAR-->
-        @include('partialsmember.sidebar')
-        <!-- END MENU SIDEBAR-->
-
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            @include('partialsmember.nav-desktop')
-            <!-- HEADER DESKTOP-->
-
-            <!-- MAIN CONTENT-->
-            <div class="main-content">
-                @yield('content')
-            </div>
+            <div class="page-container">
+                        @include('partialsmember.nav-desktop')
+                        <div class="main-content">
+                            @yield('content')
+                    <div class="page-wrapper">
+                        @include('partialsmember.sidebar')
+            
+                
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>
 
     </div>
+</div> 
     
     <!-- Jquery JS-->
     <script src="{{ asset('assets/admin/vendor/jquery-3.2.1.min.js') }}"></script>

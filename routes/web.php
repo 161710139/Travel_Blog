@@ -13,6 +13,7 @@
 Route::get('/', 'TampilanController@index')->name('awal');
 Route::get('destinasi','TampilanController@destinasi')->name('destinasi');
 Route::get('/show/{id}', 'TampilanController@show')->name('show');
+Route::get('/search', 'TampilanController@search')->name('search');
 Route::group(['prefix'=>'/show/{id}/komentar', 'middleware'=>['auth','role:member|super_admin']], function(){
 Route::post('/','KomentarController@store')->name('show.komentar.store');
 });
@@ -28,6 +29,7 @@ Route::post('destinasis/{$destinasi->id}', 'DestinasiController@destroy')->name(
 Route::resource('komentars','KomentarController');
 Route::resource('galeri','GaleriController');
 Route::resource('daftarmember','MemberController');
+Route::post('/artikel/{publish}', 'ArtikelController@Publish')->name('artikel.publish');
 Route::get('/artikel/{id}', 'GaleriController@create')->name('creategaleri');
 Route::resource('artikels','ArtikelController');
 });

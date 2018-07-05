@@ -33,7 +33,7 @@ class GaleriController extends Controller
      */
     public function create($id)
     {   
-        $artikel = Artikel::findOrFail($id);
+        $artikel = Artikel::findOrFail($id); 
         if(Laratrust::hasRole('super_admin')){
             return view('galeri.create',compact('artikel'));
         }
@@ -64,7 +64,6 @@ class GaleriController extends Controller
         $galeri->foto = $filename;
         $galeri->save();
         }
-        Session::flash('success_message','Gambar Berhasil Ditambahkan');
         return redirect()->back();
     }
 

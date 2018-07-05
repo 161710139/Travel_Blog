@@ -1,15 +1,4 @@
 @extends('layouts.member')
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/datatables/css/jquery.dataTables.css') }}"/>
-@endsection
-@section('js')
-<script type="text/javascript" src="{{ asset('assets/admin/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-    $('#example').DataTable();
-    } );
-    </script>
-@endsection
 @section('content')
 <div class="container">
 <div class="content-wrapper">

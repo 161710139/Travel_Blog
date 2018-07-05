@@ -1,20 +1,20 @@
 @extends('layouts.admin')	
 @section('content')
-<div class="row">
-	<div class="container">
-		<div class="col-md-12">
-			  <div class="panel-body">
-			  	<h2 class="sub-header">Masukan Gambar<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
-			  	<form action="{{route('creategaleri.store', $artikel->id)}}" method="post" enctype="multipart/form-data">
-        		{!! csrf_field() !!}
-        		@if ($message = Session::get('success'))
-	  				<div class="alert alert-success alert-block">
-		  			<strong>{{ $message }}</strong>
-	  				</div>
-				@endif
- 
-               <div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
-			  		<div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Tambah Gambar</div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center title-2">Galeri</h3>
+                        </div>
+                        <hr>
+			  			<form action="{{route('creategaleri.store', $artikel->id)}}" method="post" enctype="multipart/form-data">
+        				{!! csrf_field() !!}
+               			<div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
+			  				<div class="form-group {{ $errors->has('artikel_id') ? 'has error' : '' }}">
 			  			<input type="hidden" name="artikel_id" value="{{ $artikel->id }}">
 			  			<!-- </select> -->
 			  			@if ($errors->has('artikel_id'))
@@ -29,11 +29,9 @@
                     <label for="foto">Gambar</label>
                     <input type="file" id="foto" name="foto" accept="image/*" multiple>
                 </div>
- 
+ 				<br>
                 <input class="btn btn-primary" type="submit" value="Upload">
                 <a href="{{route('artikels.index')}}"><input class="btn btn-success" type="submit" name="finish" value="Finish"></a>
-            </form>
- 
         @if(count($errors) > 0)
             <div class="row">
                     <ul>
@@ -44,8 +42,39 @@
             </div>
         @endif
 			  	</form>
+			  	<br>
 			  	<hr>
-			  	<h5><i>*jika setelah memasukan gambar kembali ke halaman ini , maka teruslah menambah gambar</i></h5>
+			  	 <div class="table-responsive m-b-40">
+                    <table class="table table-borderless table-data3">
+                        <thead>
+			  		<tr>
+			  		  <th>No</th>
+					  <th>Gambar</th>
+					  <th>Option</th>
+			  		</tr>
+				  	</thead>
+				  	<tbody>
+				  		@php $no = 1; @endphp
+							@foreach($artikel->Galeri()->get() as $data)
+				  	  <tr>
+				    	<td>{{ $no++ }}</td>
+				    	<td>
+                        <a href="" class="thumbnail">
+                            <img src="../img/{{ $data->foto }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
+                        </td>
+						<td>
+							<form method="post" action="{{ route('galeri.destroy',$data->id) }}">
+								<input name="_token" type="hidden" value="{{ csrf_token() }}">
+								<input type="hidden" name="_method" value="DELETE">
+
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
+						</td>
+				      </tr>
+				      @endforeach	
+				  	</tbody>
+				  </table>
+				</div>
 			  </div>
 			</div>
 		</div>

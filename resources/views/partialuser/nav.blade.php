@@ -35,6 +35,12 @@
 		                    					@endauth
 		            						@endif
 		            					</li>
+		            					<li>
+		            						<form action="{{route('search')}}" method="get">
+		            							@csrf
+		            							<input name="search" value="" type="text" placeholder="Search">
+		            						</form>
+		            					</li>
 										<!-- <li class=""><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Codes<span class="caret"></span></a>
 											<ul class="dropdown-menu">
 												<li><a class="hvr-bounce-to-bottom" href="icons.html">Icons</a></li>

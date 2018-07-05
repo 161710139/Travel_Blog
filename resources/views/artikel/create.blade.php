@@ -1,14 +1,21 @@
 @extends('layouts.admin')
 @section('content')
-<div class="row">
-	<div class="container">
-		<div class="col-md-12">
-			  <div class="panel-body">
-			  	<h2 class="sub-header">TAMBAH ARTIKEL<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Tambah Artikel</div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center title-2">Artikel</h3>
+                        </div>
+                        <hr>
 			  	<form action="{{ route('artikels.store') }}" method="post"  enctype="multipart/form-data">
 			  		{{ csrf_field() }}
 			  		 <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
                     <label class="control-label">Sampul Gambar</label>
+                    <br>
                     <input type="file" id="foto" name="foto" class="validate" accept="image/*" required>
                 	@if ($errors->has('foto'))
                             <span class="help-block">
@@ -61,14 +68,19 @@
 			  				<strong>{{ $errors->first('destinasi') }}</strong>
 			  			</span>
 			  			@endif
+			  			<br>
 			  		<div class="form-group">
-			  			<button type="submit" class="btn btn-success">Tambah</button>
-			  		</div>
+			  			<button type="submit" class="btn btn-outline-primary"> 
+                                    <i class="fa fa-check-circle fa-lg"></i>
+                                    Simpan
+                                </button>
+			  			</div>
 			  	</form>
-			  </div>
-			</div>
-		</div>
-	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 @section('js')
