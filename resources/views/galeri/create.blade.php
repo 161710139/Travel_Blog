@@ -27,7 +27,7 @@
  
                 <div class="form-group">
                     <label for="foto">Gambar</label>
-                    <input type="file" id="foto" name="foto" accept="image/*" multiple>
+                    <input type="file" id="foto" name="foto[]" accept="image/*" multiple>
                 </div>
  				<br>
                 <input class="btn btn-primary" type="submit" value="Upload">
@@ -46,22 +46,17 @@
 			  	<hr>
 			  	 <div class="table-responsive m-b-40">
                     <table class="table table-borderless table-data3">
-                        <thead>
-			  		<tr>
+				  	<thead>
 			  		  <th>No</th>
-					  <th>Gambar</th>
-					  <th>Option</th>
-			  		</tr>
+			  		  <th>Nama Gambar</th>
+					  <th>Action</th>
 				  	</thead>
 				  	<tbody>
 				  		@php $no = 1; @endphp
-							@foreach($artikel->Galeri()->get() as $data)
+				  		@foreach($artikel->Galeri()->get() as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>
-                        <a href="" class="thumbnail">
-                            <img src="../img/{{ $data->foto }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
-                        </td>
+				    	<td>{{ $data->foto }}</td>
 						<td>
 							<form method="post" action="{{ route('galeri.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
@@ -70,14 +65,15 @@
 								<button type="submit" class="btn btn-danger">Delete</button>
 							</form>
 						</td>
-				      </tr>
-				      @endforeach	
-				  	</tbody>
-				  </table>
-				</div>
-			  </div>
-			</div>
+				</tr>
+				  @endforeach
+				</tbody>
+			</table>
+		</div>
 		</div>
 	</div>
+</div>
+</div>
+</div>
 </div>
 @endsection

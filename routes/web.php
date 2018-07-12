@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('coba','ArtikelMemberController@index')->name('coba');
 Route::get('/', 'TampilanController@index')->name('awal');
 Route::get('destinasi','TampilanController@destinasi')->name('destinasi');
 Route::get('/show/{id}', 'TampilanController@show')->name('show');

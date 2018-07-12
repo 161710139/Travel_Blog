@@ -1,22 +1,26 @@
 @extends('layouts.member')
 @section('content')
-<div class="container">
-<div class="content-wrapper">
-			  	<div class="row">
-                <div class="col-lg-11">
-                    <h2 class="title-1 m-b-25">Daftar Artikel Kamu</h2>
-                    <hr>
-                    <a href="{{ route('artikels.create') }}" class="btn btn-primary">Create</a>
-                        <div class="table-responsive table--no-card m-b-40">
-                        <table id="example" class="table display table-borderless table-striped table-earning" style="width:100%">
-                        <br>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row m-t-30">
+            <div class="col-md-12">
+                <div class="m-b-10">
+                    <a href="{{ route('artikels.create') }}" class="btn btn-outline-danger">
+                        <i class="fa fa-pencil-square-o"></i>    
+                        Tambah Data
+                    </a>
+                    
+                </div>
+                <!-- DATA TABLE-->
+                <div class="table-responsive m-b-40">
+                    <table class="table table-borderless table-data3">
 				  	<thead>
-			  		<tr>
 			  		  <th>No</th>
 			  		  <th>Sampul</th>
 					  <th>Judul Artikel</th>
 					  <th>Destinasi</th>
 					  <th>Created At</th>
+					  <th colspan="2">Status</th>
 					  <th colspan="3">Action</th>
 			  		</tr>
 				  	</thead>
@@ -33,6 +37,13 @@
 				    	<td>{{ $data->judul_artikel}}</td>
 						<td>{{$data->Destinasi->nama_destinasi}}</td>
 						<td>{{ $data->created_at->diffForHumans() }}</td>
+						<td> @if($data->status == 1)
+                                <input type="button" class="btn btn-info" name="unpublish" value="Sudah Publish">
+                                @elseif($data->status == 0)
+                                <input type="button" class="btn btn-danger" name="publish" value="Belum Dipublish Oleh Admin">
+                            	</td>
+                                @endif
+						<td>
 						<td>
 							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
 						</td>
@@ -48,12 +59,14 @@
 							</form>
 						</td>
 				      </tr>
-				      @endforeach	
+				      @endforeach
+				      <div class="text-center">
+						{!! $artikel->links(); !!}
+					</div>		
 				  	</tbody>
 				  </table>
 				</div>
-			  </div>
-			</div>	
+			</div>
 		</div>
 	</div>
 </div>

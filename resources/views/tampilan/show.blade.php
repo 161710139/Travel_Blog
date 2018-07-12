@@ -3,7 +3,7 @@
 <div class="single">
 		<div class="container">
 			<div class="agileits-single-img">
-				<center><img src="../img/{{ $artikel->foto, $artikel->nama }}" style="max-height:700px;max-width:700px;" />
+				<center><img src="../img/{{ $artikel->foto, $artikel->nama }}" style="width: 650px;height: 400px" />
 				</center><br><br>
 				<h4>{{ $artikel->judul_artikel }}</h4>
 				<hr>
@@ -28,7 +28,7 @@
 										<div class="grid">
 											<figure class="effect-apollo">
 												<a class="example-image-link" href="../img/{{ $data->foto, $data->nama }}">
-													<img src="../img/{{ $data->foto }}" alt="" />
+													<img src="../img/{{ $data->foto }}" alt="" style="width: 400px;height: 250px" />
 													<figcaption>
 													</figcaption>	
 												</a>
@@ -104,6 +104,5 @@
  </script>
 </div>
 </div>
-@endif
 <!--banner Slider starts Here-->
 @endsection

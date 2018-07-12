@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<div class="col-md-5 w3ls-welcome-img1">
-					<img src="../img/{{ $data->foto, $data->nama }}" style="max-height:400px;max-width:400px;margin-top:7px;" />
+					<img src="../img/{{ $data->foto, $data->nama }}" style="width: 400px;height: 250px" />
 				</div>
 				<div class="clearfix"></div>
 			</div>

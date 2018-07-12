@@ -1,10 +1,16 @@
 @extends('layouts.admin')
 @section('content')
-<div class="row">
-	<div class="container">
-		<div class="col-md-12">
-			  <div class="panel-body">
-			  	<h2 class="sub-header">Edit ArtikeL<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Edit Artikel</div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center title-2">Artikel</h3>
+                        </div>
+                        <hr>
 			  	<form action="{{ route('artikels.update',$artikel->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
 			  		{{ csrf_field() }}
@@ -63,7 +69,8 @@
 			  	</form>
 			  </div>
 			</div>
-		
+		</div>
+	</div>
 	</div>
 </div>
 @endsection

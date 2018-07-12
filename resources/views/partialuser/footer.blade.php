@@ -3,36 +3,32 @@
 			<div class="agile-footer-grids">
 				<div class="col-md-4 agile-footer-grid">
 					<h4>Quotes</h4>
-					<p>"Setiap ini memiliki tempat "</p>
+					<p>"Aku sadar bahwa pergi berpetualang adalah cara terbaik untuk belajar"</p>
+					<p>"Tujuan bukanlah sebuah tempat, namun sebuah cara pandang baru"</p>
+					<p>"Aku jatuh cinta dengan deretan kota yang belum pernah kudatangi dan pada orang yang belum pernah kutemui"</p>
+					<p>"Kamu tak harus selalu memiliki rencana. Kadang yang kamu perlukan hanyalah sebuah keyakinan dan lihatlah apa yang dunia tawarkan"</p>
 				</div>
 				<div class="col-md-4 agile-footer-grid">
-					<h4>Twitter Posts</h4>
+					<h4></h4>
 					<ul class="w3agile_footer_grid_list">
-						<li>Ut aut reiciendis voluptatibus maiores <a href="#">http://example.com</a> alias, ut aut reiciendis.
-							<span><i class="fa fa-twitter" aria-hidden="true"></i> 02 days ago</span></li>
-						<li>Itaque earum rerum hic tenetur a sapiente delectus <a href="#">http://mail.com</a> ut aut
-							voluptatibus.<span><i class="fa fa-twitter" aria-hidden="true"></i> 03 days ago</span></li>
+						<p>"Don’t be a tourist, be a traveler"</p>
+					<p>"Getting lost will helm you find yourself"</p>
+					<p>"I am not the same having seen the moon shine on the other side of the world"</p>
+					<p>"Salt in the air, sand in my air"</p>
 					</ul>
 				</div>
 				<div class="col-md-2 agile-footer-grid">
 					<h4>Events</h4>
 					<ul>
-						<li>12th Aug <a href="single.html">Curabitur</a></li>
-						<li>10th Sept <a href="single.html">Fusce urna</a></li>
-						<li>24th Sept <a href="single.html">Praesent</a></li>
-						<li>17th Oct <a href="single.html">Malesuada </a></li>
-						<li>09th Dec <a href="single.html">Cum sociis</a></li>
+						<li>12 Agustus <b><i>Travel Conference Bandung</b></i> </li>
+						<li>10 Juli <b><i>Trip Bareng Raja Ampat</i></b></li>
 					</ul>
 				</div>
 				<div class="col-md-2 agile-footer-grid">
 					<h4>Navigation</h4>
 					<ul>
-						<li class="text"><a href="index.html">Home</a></li>
-						<li class="text"><a href="about.html">About</a></li>
-						<li class="text"><a href="icons.html">Icons</a></li>
-						<li class="text"><a href="typography.html">Typography</a></li>
-						<li class="text"><a href="gallery.html">Gallery</a></li>
-						<li class="text"><a href="contact.html">Contact</a></li>
+						<li class="text"><a href="/">Home</a></li>
+						<li class="text"><a href="destinasis">Destinasi</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>

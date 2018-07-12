@@ -33,13 +33,15 @@ class GaleriController extends Controller
      */
     public function create($id)
     {   
-        $artikel = Artikel::findOrFail($id); 
+        $artikel = Artikel::findOrFail($id);
+        $galeri = Galeri::All();
         if(Laratrust::hasRole('super_admin')){
-            return view('galeri.create',compact('artikel'));
+            return view('galeri.create',compact('artikel','galeri'));
         }
         else if(Laratrust::hasRole('member')){
-            return view('member.galeri.create',compact('artikel'));
+            return view('member.galeri.create',compact('artikel','galeri'));
         }
+
     }
 
     /**
@@ -49,21 +51,39 @@ class GaleriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'foto' => 'image|max:20048',
-            'artikel_id'=> 'required'
-        ]);
-        $galeri = Galeri::create($request->except('foto'));
+    {   
         if ($request->hasFile('foto')) {
-        $uploaded_logo = $request->file('foto');
-        $extension = $uploaded_logo->getClientOriginalExtension();
-        $filename = md5(time()) . '.' . $extension;
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
-        $uploaded_logo->move($destinationPath, $filename);
-        $galeri->foto = $filename;
-        $galeri->save();
+            foreach ($request->foto as $foto) {
+                // $uploaded_foto = $request->file('foto');
+                // $extension = $uploaded_foto->getClientOriginalExtension();
+                // $filename = md5(time()) . '.' . $extension;
+                $filename = $foto->getClientOriginalName();
+                $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+                $foto->move($destinationPath, $filename);
+                $galeri = Galeri::create($request->except('foto'));
+                $galeri->foto = $filename;
+                $galeri->save();
+                // $filename = $foto->getClientOriginalName();
+                // $foto->storeAs('public/img',$filename);
+                // $galeri->foto = $filename;
+                // $galeri->save();
+            }
         }
+        // $this->validate($request, [
+        //     'foto' => 'image|max:20048',
+        //     'artikel_id'=> 'required'
+        // ]);
+        // foreach ($request->image as $foto) {
+        // $galeri = Galeri::create($request->except('foto'));
+        // if ($request->hasFile('foto')) {
+        // $uploaded_foto = $request->file('foto');
+        // $extension = $uploaded_foto->getClientOriginalExtension();
+        // $filename = md5(time()) . '.' . $extension;
+        // $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        // $uploaded_foto->move($destinationPath, $filename);
+        // $galeri->foto = $filename;
+        // $galeri->save();
+        // }     
         return redirect()->back();
     }
 
@@ -141,6 +161,6 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::findOrFail($id);
         $galeri->delete();
-        return redirect()->route('galeri.index');
+        return redirect()->back();
     }
 }

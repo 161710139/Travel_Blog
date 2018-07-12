@@ -3,6 +3,7 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                              <a class="btn btn-primary" href="{{ route('awal') }}"><i class="fas fa-home"></i>&nbsp&nbspHome</a>
+                             </form>
                             <div class="header-button">
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">

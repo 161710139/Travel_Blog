@@ -26,8 +26,8 @@ class UsersSeeder extends Seeder
         $superadminRole->save();
 
         $superadmin = new User();
-        $superadmin->name = "Super Admin";
-        $superadmin->email = "superadmin@gmail.com";
+        $superadmin->name = "Admin";
+        $superadmin->email = "admin@gmail.com";
         $superadmin->password = bcrypt('rahasia');
         $superadmin->save();
         $superadmin->attachRole($superadminRole);

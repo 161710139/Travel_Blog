@@ -1,16 +1,13 @@
 @extends('layouts.admin')
 @section('content')
-<div class="content-wrapper">
+<div class="section__content section__content--p30">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-			  	<div class="row">
-                <div class="col-lg-11">  
-                <h2>Daftar Gambar</h2>
-                <hr>                
-                        <div class="table-responsive table--no-card m-b-40">
-                        <table class="table table-borderless table-striped table-earning">
-                        <br>
-                        <thead>
+        <div class="row m-t-30">
+            <div class="col-md-12">
+                <!-- DATA TABLE-->
+                <div class="table-responsive m-b-40">
+                    <table class="table table-borderless table-data3">
+				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
 					  <th>Judul Artikel</th>

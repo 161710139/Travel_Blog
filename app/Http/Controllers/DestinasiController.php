@@ -42,7 +42,7 @@ class DestinasiController extends Controller
         $destinasis = new Destinasi;
         $destinasis->nama_destinasi = $request->nama_destinasi;
         $destinasis->save();
-        return redirect()->route('destinasis.index');
+        return redirect()->back();
 
     }
 

@@ -82,8 +82,19 @@
     <script src="{{ asset('/assets/admin/vendor/circle-progress/circle-progress.min.js') }}"></script>
     <script src="{{ asset('/assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('/assets/admin/vendor/chartjs/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('/assets/admin/vendor/select2/select2.min.js') }}">
-    </script>
+    <script src="{{ asset('/assets/admin/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('/vendor/tinymce/tinymce.min.js')}}"></script>
+    <script src="{{ asset('/vendor/tinymce/jquery.tinymce.min.js')}}"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector : "textarea",
+   plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste"],
+
+   toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+
+   image_advtab: true ,
+});
+</script>
 
     <!-- Main JS-->
     <script src="{{ asset('/assets/admin/js/main.js') }}"></script>
