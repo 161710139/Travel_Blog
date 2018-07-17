@@ -23,7 +23,8 @@ class TampilanController extends Controller
     public function index()
     {   
         $artikel= Artikel::orderBy('created_at','desc')->paginate(10);
-        return view('tampilan.index', compact('artikel'));
+        $user = User::All();
+        return view('tampilan.index', compact('artikel','user'));
     }
 
     /**
@@ -45,7 +46,12 @@ class TampilanController extends Controller
     {
         $destinasi = Destinasi::findOrFail($id);
         return view('tampilan.daftar',compact('destinasi'));
-    }
+    }  
+    // public function biografi($id)
+    // {
+    //     $user = User::findOrFail($id);
+    //     return view('tampilan.biografi',compact('user'));
+    // }
 
 
     /**

@@ -28,7 +28,7 @@
 					<h4>Navigation</h4>
 					<ul>
 						<li class="text"><a href="/">Home</a></li>
-						<li class="text"><a href="destinasis">Destinasi</a></li>
+						<li class="text"><a href="destinasi">Destinasi</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -39,6 +39,6 @@
 	<!-- copyright -->
 	<div class="agileits-w3layouts-copyright">
 		<div class="container">
-			<p>© 2017 Njoy Travels. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			<p>© 2018 Share Travel. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 		</div>
 	</div>

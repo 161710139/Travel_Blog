@@ -18,7 +18,7 @@ class CreateArtikelsTable extends Migration
             $table->string('foto')->nullable();
             $table->string('judul_artikel');
             $table->longText('isi_artikel');
-            $table->string('status');
+            $table->boolean('status');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->unsignedInteger('destinasi_id');

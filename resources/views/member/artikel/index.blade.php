@@ -16,7 +16,6 @@
                     <table class="table table-borderless table-data3">
 				  	<thead>
 			  		  <th>No</th>
-			  		  <th>Sampul</th>
 					  <th>Judul Artikel</th>
 					  <th>Destinasi</th>
 					  <th>Created At</th>
@@ -29,11 +28,11 @@
 				  		@foreach($artikel as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>
+				    	<!-- <td>
 				    	<a href="" class="thumbnail">
                             <img src="../img/{{ $data->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;" >
                         </a>
-                        </td>
+                        </td> -->
 				    	<td>{{ $data->judul_artikel}}</td>
 						<td>{{$data->Destinasi->nama_destinasi}}</td>
 						<td>{{ $data->created_at->diffForHumans() }}</td>
@@ -45,17 +44,17 @@
                                 @endif
 						<td>
 						<td>
-							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
+							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Ubah</a>
 						</td>
 						<td>
-							<a class="btn btn-success" href="{{ route('show',$data->id) }}">Show</a>
+							<a class="btn btn-success" href="{{ route('show',$data->id) }}">Lihat</a>
 						</td>
 						<td>
 							<form method="post" action="{{ route('artikels.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 
-								<button type="submit" class="btn btn-danger">Delete</button>
+								<button type="submit" class="btn btn-danger">Hapus</button>
 							</form>
 						</td>
 				      </tr>

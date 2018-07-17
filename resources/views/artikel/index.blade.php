@@ -37,7 +37,7 @@
 						<td> @if($data->status == 1)
                                 <form action="{{ route('artikel.publish',$data->id) }}" method="post">
                                     @csrf
-                                <button type="submit" class="btn btn-warning">unPublish</button>
+                                <button type="submit" class="btn btn-danger">Jangan Publish</button>
                                 </form>
                                 @elseif($data->status == 0)
                                 <form action="{{ route('artikel.publish',$data->id) }}" method="post">
@@ -47,16 +47,16 @@
                                 </td>
                                 @endif
 						<td>
-							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Edit</a>
+							<a class="btn btn-warning" href="{{ route('artikels.edit',$data->id) }}">Ubah</a>
 						</td>
 						<td>
-							<a class="btn btn-success" href="{{ route('show',$data->id) }}">Show</a>
+							<a class="btn btn-success" href="{{ route('show',$data->id) }}">Lihat</a>
 						</td>
 						<td>
 							<form method="post" action="{{ route('artikels.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
-								<button type="submit" class="btn btn-danger">Delete</button>
+								<button type="submit" class="btn btn-danger">Hapus</button>
 							</form>
 						</td>
 				      </tr>

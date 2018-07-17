@@ -16,8 +16,8 @@
 						<li><i class="fa fa-calendar" aria-hidden="true"></i><span>{{$data->created_at->diffForHumans()}}</span></li>
 						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><span>{{$data->Destinasi->nama_destinasi}}</span></li>
 					</ul>				
-				    </div>
-					<p>{!!substr($data['isi_artikel'],0,500)!!}...Baca Selengkapnya</p>
+				    </div><!-- 
+					<p>{!!substr($data['isi_artikel'],0,500)!!}...Baca Selengkapnya</p> -->
 					<div class="w3l-button">
 						<a href="{{  route('show',$data->id) }}">More</a>
 					</div>

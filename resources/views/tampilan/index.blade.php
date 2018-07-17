@@ -58,20 +58,20 @@
 						<li><i class="fa fa-calendar" aria-hidden="true"></i><span>{{$data->created_at->diffForHumans()}}</span></li>
 						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><span>{{$data->Destinasi->nama_destinasi}}</span></li>
 					</ul>				
-				    </div>
-					<p>{!!substr($data['isi_artikel'],0,500)!!}...Baca Selengkapnya</p>
+				    </div><!-- 
+					<p>{{substr($data['isi_artikel'],0,600)}}</p>
+			 -->
 					<div class="w3l-button">
-						<a href="{{  route('show',$data->id) }}">More</a>
+						<a href="{{  route('show',$data->id) }}">Baca Artikel</a>
 					</div>
 				</div>
 				<div class="col-md-5 w3ls-welcome-img1">
-					<img src="../img/{{ $data->foto, $data->nama }}" style="width: 400px;height: 250px" />
+					<img src="../img/{{ $data->foto, $data->nama }}" style="width: 300px;height: 150px" />
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			<br>
 			<hr>
-			<br>
 			@endif
 			@endforeach
 			<div class="text-center">
